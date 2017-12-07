@@ -1,32 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.cwi.monitor.agent.collector;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import oshi.json.SystemInfo;
+import br.com.cwi.monitor.agent.entity.Info;
+import br.com.cwi.monitor.agent.persistence.repository.InfoRepository;
+import br.com.cwi.monitor.agent.persistence.repository.InfoRepositorySQLiteImplementation;
+import java.time.LocalDateTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
- *
  * @author Leonardo Bork
  */
 
 public class Collector {
+    private final Timer timer = new Timer();
+    private final InfoRepository infoRepository;
+    private final int milliseconds;
     
-    public static void main(String [] args){
-        
-        SystemInfo system = new SystemInfo();
-        while(true){
-        
-        System.out.println(system.getHardware().getProcessor().getName());
+    public Collector(int milliseconds) {
+        this.milliseconds = milliseconds;
+        this.infoRepository = new InfoRepositorySQLiteImplementation();
+    }
+    
+    public void start() {
+        timer.scheduleAtFixedRate(new CollectorTask(), 0, milliseconds);
+    }
+    
+    public class CollectorTask extends TimerTask {
+        @Override
+        public void run() {
+            /**
+             * Temporário, até conseguirmos a info do pc.
+             */
+            Info info = Info.builder().memoria(0.5).cPU(0.5).disco(0.5).hora(LocalDateTime.now()).build();
+            infoRepository.save(info);
         }
     }
+    
 }
