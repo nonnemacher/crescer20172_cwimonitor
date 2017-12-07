@@ -11,6 +11,9 @@ public class RunOshi {
 
 	public static void main(String[] args) {
 
+		final String agentKey = System.getProperty("agent.key");
+		System.out.println("Chave do agent " + agentKey);
+
 		SystemInfo si = new SystemInfo();
 		final CentralProcessor processor = si.getHardware().getProcessor();
 		final int cores = processor.getPhysicalProcessorCount();
