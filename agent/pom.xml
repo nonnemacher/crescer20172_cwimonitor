@@ -13,12 +13,14 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>br.com.cwi.monitor</groupId>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.oshi</groupId>
             <artifactId>oshi-json</artifactId>
             <version>3.4.4</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/oshi-json-3.4.4.jar</systemPath>
-            <type>jar</type>
         </dependency>
     </dependencies>
     <properties>
