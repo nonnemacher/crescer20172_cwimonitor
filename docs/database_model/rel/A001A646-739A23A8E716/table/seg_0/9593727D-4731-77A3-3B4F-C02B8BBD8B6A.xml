@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9593727D-4731-77A3-3B4F-C02B8BBD8B6A" name="MACHINE_TAG_MACHINE_REGISTER">
+<createdBy>leonardo.bork</createdBy>
+<createdTime>2017-12-07 18:12:47 UTC</createdTime>
+<generatorID>Gerado pelo usuário</generatorID>
+<ownerDesignName>database_model</ownerDesignName>
+<ordsAlias>table_15</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="50FA9D06-6052-E24B-1A7F-1FBB747C38BE">
+<createdBy>leonardo.bork</createdBy>
+<createdTime>2017-12-07 18:13:10 UTC</createdTime>
+<generatorID>Gerado pelo usuário</generatorID>
+<ownerDesignName>database_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MACHINE_REGISTER_ID" id="C879710A-2DE0-B9F9-D767-885C3DC8965D">
+<createdBy>leonardo.bork</createdBy>
+<createdTime>2017-12-07 18:13:19 UTC</createdTime>
+<generatorID>Gerado pelo usuário</generatorID>
+<ownerDesignName>database_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3E303A02-7620-5403-1226-D99EF146F4AD" referredColumn="C7320810-FE7C-2904-8DB3-9E956157999B"/>
+</associations>
+</Column>
+<Column name="MACHINE_TAG_ID" id="CFC3FD40-A863-2FFE-885A-55099CE208CC">
+<createdBy>leonardo.bork</createdBy>
+<createdTime>2017-12-07 18:13:26 UTC</createdTime>
+<generatorID>Gerado pelo usuário</generatorID>
+<ownerDesignName>database_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CC5FA02D-8ECF-AFA7-4057-1BA282A2FAF8" referredColumn="B3CF54FE-D91D-C2C1-075C-AD4B369F5A53"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DAAEE2C6-65DA-DF7E-CC00-98EE1CD14A51" name="MACHINE_TAG_MACHINE_REGISTER_PK">
+<createdBy>leonardo.bork</createdBy>
+<createdTime>2017-12-07 18:13:10 UTC</createdTime>
+<generatorID>Gerado pelo usuário</generatorID>
+<ownerDesignName>database_model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="50FA9D06-6052-E24B-1A7F-1FBB747C38BE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="10FD243C-04F2-351B-7CB1-12318541AC94" name="MACHINE_TAG_MACHINE_REGISTER_MACHINE_REGISTER_FK">
+<createdBy>leonardo.bork</createdBy>
+<createdTime>2017-12-07 18:13:19 UTC</createdTime>
+<generatorID>Gerado pelo usuário</generatorID>
+<ownerDesignName>database_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C879710A-2DE0-B9F9-D767-885C3DC8965D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="104C522A-26F4-D370-B205-E6C86A463D7B" name="MACHINE_TAG_MACHINE_REGISTER_MACHINE_TAG_FK">
+<createdBy>leonardo.bork</createdBy>
+<createdTime>2017-12-07 18:13:26 UTC</createdTime>
+<generatorID>Gerado pelo usuário</generatorID>
+<ownerDesignName>database_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CFC3FD40-A863-2FFE-885A-55099CE208CC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
