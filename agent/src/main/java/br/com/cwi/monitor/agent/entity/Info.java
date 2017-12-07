@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author Alvaro
@@ -15,15 +16,11 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Info {
     private Long id;
     private double memoria;
     private double cPU;
     private double disco;
     private LocalDateTime hora;
-
-    @Override
-    public String toString() {
-        return "Info{" + "id=" + id + ", memoria=" + memoria + ", cPU=" + cPU + ", disco=" + disco + ", hora=" + hora + '}';
-    }
 }

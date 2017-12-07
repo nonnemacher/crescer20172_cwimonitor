@@ -7,11 +7,9 @@ import java.time.LocalDateTime;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 /**
  * @author Leonardo Bork
  */
-
 public class Collector {
     private final Timer timer = new Timer();
     private final InfoRepository infoRepository;
@@ -29,12 +27,8 @@ public class Collector {
     public class CollectorTask extends TimerTask {
         @Override
         public void run() {
-            /**
-             * Temporário, até conseguirmos a info do pc.
-             */
             Info info = Info.builder().memoria(0.5).cPU(0.5).disco(0.5).hora(LocalDateTime.now()).build();
             infoRepository.save(info);
         }
-    }
-    
+    }   
 }
