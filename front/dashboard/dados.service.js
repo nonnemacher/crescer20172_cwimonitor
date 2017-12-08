@@ -1,7 +1,21 @@
 angular.module('app').factory('dadosService', function ($http) {
 
-    let urlBase = 'http://localhost:';
+    let urlBase = 'http://localhost:9090/dados/';
 
+     //real
+     function cpuReal() {
+        return $http.get(urlBase+'real')       
+    }
+
+    function memoriaReal() {
+        return $http.get(urlBase+'real')       
+    }
+
+    function discoReal() {
+        return $http.get(urlBase+'real')       
+    }
+    
+    
     //15 minutos
     function cpu15Minutos() {
         return $http.get(urlBase)       
@@ -88,6 +102,10 @@ angular.module('app').factory('dadosService', function ($http) {
     }
 
     return {
+        cpuReal : cpuReal ,
+        memoriaReal  : memoriaReal ,
+        discoReal  : discoReal ,
+
         cpu15Minutos : cpu15Minutos,
         memoria15Minutos : memoria15Minutos,
         disco15Minutos : disco15Minutos,
@@ -104,9 +122,9 @@ angular.module('app').factory('dadosService', function ($http) {
         memoria12Horas : memoria12Horas,
         disco12Horas : disco12Horas,
 
-        cpu24Horas : cpu24Horas,
-        memoria24Horas : memoria24Horas,
-        disco24Horas: disco24Horas,
+        cpu1Dia : cpu24Horas,
+        memoria1Dia  : memoria24Horas,
+        disco1Dia : disco24Horas,
 
         cpu7Dias : cpu7Dias,
         memoria7Dias : memoria7Dias,

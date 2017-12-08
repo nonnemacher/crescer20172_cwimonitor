@@ -36,7 +36,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
       function (response) {
 
         // Adiciona usuário e header ao localstorage
-        $localStorage.usuarioLogado = response.data.dados;
+        $localStorage.usuarioLogado = response.data;
         $localStorage.headerAuth = montarHeader(usuario)['Authorization'];
 
         // Adiciona header de autenticação em todos os próximos requests
@@ -47,6 +47,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
         // Redireciona se tiver uma url configurada
         if (urlPrivado) {
           $location.path(urlPrivado);
+          
         }
 
         // resolve promise com sucesso 
@@ -91,7 +92,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
   function possuiPermissao(permissao) {
     return isAutenticado() &&
-      getUsuario().Permissoes.find((p) => p.Nome === permissao);
+      getUsuario().authorities.find((p) => p.Nome === permissao);
   };
 
 
