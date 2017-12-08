@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +27,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
             pstmt.setDouble(2, info.getCpu());
             pstmt.setDouble(3, info.getDisk());
             pstmt.setObject(4, info.getTime());
+            
             pstmt.executeUpdate();
         } catch (SQLException e) {
             // ..
@@ -67,15 +67,14 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
         ArrayList<Info> infos = new ArrayList();
         try (Connection conn = ConnectionFactory.getConnection();
                 Statement stmt = conn.createStatement();
-                    ResultSet rs = stmt.executeQuery(sql)) {
-            
+                    ResultSet rs = stmt.executeQuery(sql)) {         
             while (rs.next()) {
                 Info info = new Info();
                 info.setId(rs.getLong("ID"));
                 info.setMemory(rs.getDouble("MEMORY"));
-                info.setCpu(rs.getDouble("CPU")); 
+                info.setCpu(rs.getDouble("CPU"));
                 info.setDisk(rs.getDouble("DISK"));
-                info.setTime(LocalDateTime.parse(rs.getString("TIME")));
+                info.setTime(rs.getLong("TIME"));
                 infos.add(info);
             }
         } catch (SQLException e) {
@@ -88,14 +87,12 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
     public int getCount() {
         final String sql = "select count(1) as total from INFO";
         int total = 0;
-
         try (Connection conn = ConnectionFactory.getConnection();
                 Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             total = rs.getInt("total");
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            // ..
         }
         return total;
     }
@@ -106,7 +103,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
                 Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
-            e.printStackTrace();
+            // ..
         }
     }
 
@@ -115,14 +112,12 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
                 + "MEMORY REAL NOT NULL,"
                 + "CPU REAL NOT NULL,"
                 + "DISK REAL NOT NULL,"
-                + "TIME INTEGER NOT NULL)";
-
+                + "TIME REAL NOT NULL)";
         try (Connection conn = ConnectionFactory.getConnection();
                 Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
-            e.printStackTrace();
+            // ..
         }
     }
-
 }
