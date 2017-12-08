@@ -48,6 +48,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
 
     @Override
     public void delete(List<Info> infos) {
+<<<<<<< HEAD
         String sql = String.format("delete from INFO where ID in (%s)", infos.stream()
                                                                         .map(Info::getId)
                                                                         .map(l -> l.toString())
@@ -55,6 +56,16 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
         try (Connection conn = ConnectionFactory.getConnection();
                 Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
+=======
+        String sql = "delete from INFO where ID in (?)";
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, infos.stream()
+                    .map(Info::getId)
+                    .map(l -> l.toString())
+                    .collect(Collectors.joining(",")));
+            pstmt.executeUpdate();
+>>>>>>> 81358300e749e78fd73691cd2978521b1ee41280
         } catch (SQLException e) {
             // ..
         }
