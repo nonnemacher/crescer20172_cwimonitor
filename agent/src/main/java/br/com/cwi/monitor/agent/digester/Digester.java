@@ -37,7 +37,7 @@ public class Digester {
         public void run() {
             List<Info> infos = infoRepository.retrieve(1);
             try {
-                send(infos);
+                System.out.println(infos.get(1));
             } catch (Exception e) {
                 e.printStackTrace();
             }

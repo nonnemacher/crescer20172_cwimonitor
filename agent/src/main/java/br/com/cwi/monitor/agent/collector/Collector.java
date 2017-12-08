@@ -3,7 +3,6 @@ package br.com.cwi.monitor.agent.collector;
 import br.com.cwi.monitor.agent.entity.Info;
 import br.com.cwi.monitor.agent.persistence.repository.InfoRepository;
 import br.com.cwi.monitor.agent.persistence.repository.InfoRepositorySQLiteImplementation;
-import java.time.LocalDateTime;
 import java.util.Timer;
 import java.util.TimerTask;
 import oshi.SystemInfo;
@@ -38,7 +37,7 @@ public class Collector {
             SystemInfo si = new SystemInfo();
             final CentralProcessor processor = si.getHardware().getProcessor();
             final int cores = processor.getPhysicalProcessorCount();
-            double memoryPercentageUsed = si.getHardware().getMemory().getAvailable() / si.getHardware().getMemory().getAvailable();
+            double memoryPercentageUsed = (si.getHardware().getMemory().getAvailable() / si.getHardware().getMemory().getTotal()) * 100;
             double totalUsableSpace = 0;
             
 
