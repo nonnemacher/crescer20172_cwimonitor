@@ -26,7 +26,8 @@ public class Info {
     private double cpu;
     //Disk left space in m
     private double disk;
-    private LocalDateTime time;
+    
+    private Long time;
 
     @Override
     public String toString() {
