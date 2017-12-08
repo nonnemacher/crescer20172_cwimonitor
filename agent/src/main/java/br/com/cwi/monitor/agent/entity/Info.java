@@ -16,14 +16,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Info {
+
     private Long id;
-    private double memoria;
-    private double cPU;
-    private double disco;
-    private LocalDateTime hora;
+    //Ram memory percent left space
+    private double memory;
+    //Cpu usage percent 
+    private double cpu;
+    //Disk left space in m
+    private double disk;
+    private LocalDateTime time;
 
     @Override
     public String toString() {
-        return "Info{" + "id=" + id + ", memoria=" + memoria + ", cPU=" + cPU + ", disco=" + disco + ", hora=" + hora + '}';
+        return "Info{" + "id=" + id + ", memory=" + memory + ", cpu=" + cpu + ", disk=" + disk + ", time=" + time + '}';
     }
 }

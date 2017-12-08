@@ -20,13 +20,13 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
 
     @Override
     public void save(Info info) {
-        String sql = "insert into INFO(MEMORIA, CPU, DISCO, HORA) values (?, ?, ?, ?)";
+        String sql = "insert into INFO(MEMORY, CPU, DISK, TIME) values (?, ?, ?, ?)";
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setDouble(1, info.getMemoria());
-            pstmt.setDouble(2, info.getCPU());
-            pstmt.setDouble(3, info.getDisco());
-            pstmt.setObject(4, info.getHora());
+            pstmt.setDouble(1, info.getMemory());
+            pstmt.setDouble(2, info.getCpu());
+            pstmt.setDouble(3, info.getDisk());
+            pstmt.setObject(4, info.getTime());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             // ..
@@ -52,7 +52,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
 
     @Override
     public List<Info> retrieve(int n) {
-        String sql = "select ID, MEMORIA, CPU, DISCO, HORA from INFO order by HORA asc limit " + n;
+        String sql = "select ID, MEMORY, CPU, DISK, TIME from INFO order by TIME asc limit " + n;
         ArrayList<Info> infos = new ArrayList();
         try (Connection conn = ConnectionFactory.getConnection();
                 Statement stmt = conn.createStatement();
@@ -61,10 +61,10 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
             while (rs.next()) {
                 Info info = new Info();
                 info.setId(rs.getLong("ID"));
-                info.setMemoria(rs.getDouble("MEMORIA"));
-                info.setCPU(rs.getDouble("CPU"));
-                info.setDisco(rs.getDouble("DISCO"));
-                info.setHora(LocalDateTime.parse(rs.getString("HORA")));
+                info.setMemory(rs.getDouble("MEMORY"));
+                info.setCpu(rs.getDouble("CPU")); 
+                info.setDisk(rs.getDouble("DISK"));
+                info.setTime(LocalDateTime.parse(rs.getString("TIME")));
                 infos.add(info);
             }
         } catch (SQLException e) {
@@ -101,10 +101,10 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
 
     public void createTable() {
         final String sql = "create table if not exists INFO (ID INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + "MEMORIA REAL NOT NULL,"
+                + "MEMORY REAL NOT NULL,"
                 + "CPU REAL NOT NULL,"
-                + "DISCO REAL NOT NULL,"
-                + "HORA INTEGER NOT NULL)";
+                + "DISK REAL NOT NULL,"
+                + "TIME INTEGER NOT NULL)";
 
         try (Connection conn = ConnectionFactory.getConnection();
                 Statement stmt = conn.createStatement()) {
