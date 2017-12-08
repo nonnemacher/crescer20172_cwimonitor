@@ -47,7 +47,7 @@ public class Collector {
                 totalUsableSpace += s.getUsableSpace();
             }
 
-            Info info = Info.builder().memory(memoryPercentageUsed).cpu(processor.getSystemCpuLoad() * 100).disk(totalUsableSpace).time(LocalDateTime.now()).build();
+            Info info = Info.builder().memory(memoryPercentageUsed).cpu(processor.getSystemCpuLoad() * 100).disk(totalUsableSpace).time(System.currentTimeMillis()).build();
             infoRepository.save(info);
         }
     }
