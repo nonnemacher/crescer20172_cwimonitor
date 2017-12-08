@@ -18,9 +18,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Info {
+
     private Long id;
-    private double memoria;
-    private double cPU;
-    private double disco;
-    private LocalDateTime hora;
+    //Ram memory percent left space
+    private double memory;
+    //Cpu usage percent 
+    private double cpu;
+    //Disk left space in m
+    private double disk;
+    private LocalDateTime time;
+
+    @Override
+    public String toString() {
+        return "Info{" + "id=" + id + ", memory=" + memory + ", cpu=" + cpu + ", disk=" + disk + ", time=" + time + '}';
+    }
 }
