@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Alvaro
@@ -47,7 +48,17 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
 
     @Override
     public void delete(List<Info> infos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "delete from INFO where ID in (?)";
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, infos.stream()
+                    .map(Info::getId)
+                    .map(l -> l.toString())
+                    .collect(Collectors.joining(",")));
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            // ..
+        }
     }
 
     @Override
