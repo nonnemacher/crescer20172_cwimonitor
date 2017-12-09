@@ -65,7 +65,7 @@ public class MachineInfo implements Serializable {
 
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
-    @Column(name = "BIRTHDATE", nullable = false)
+    @Column(name = "EXEC_TIME", nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime execTime;
 

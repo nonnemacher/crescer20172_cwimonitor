@@ -12,6 +12,7 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Leonardo Bork
  */
-public interface MachineTagRepository extends CrudRepository<MachineTag, Long>{
-    
+public interface MachineTagRepository extends CrudRepository<MachineTag, Long> {
+
+    MachineTag findByDescription(String description);
 }
