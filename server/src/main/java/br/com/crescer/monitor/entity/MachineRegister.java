@@ -51,14 +51,14 @@ public class MachineRegister implements Serializable {
     private String generatedKey;
 
     @NotNull(message = "Field must not be null")
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(nullable = false, length = 255)
     private String machineName;
-
+    
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(nullable = false, length = 255)
-    private double machineRoomLocation;
+    private String machineNickname;
 
     @ManyToOne
     @JoinColumn(name = "ID_COLLABORATOR")
@@ -72,4 +72,5 @@ public class MachineRegister implements Serializable {
     
     @ManyToMany(mappedBy = "machines")
     private List<MachineMonitoringGroup> groups;
+    
 }

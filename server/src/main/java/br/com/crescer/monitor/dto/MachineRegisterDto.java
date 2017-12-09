@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MachineRegisterDto {
 
-    private String machineName;
+    private String machineNickname;
 
     private double machineRoomLocation;
     

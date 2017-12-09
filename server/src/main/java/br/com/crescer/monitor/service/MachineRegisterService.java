@@ -45,8 +45,7 @@ public class MachineRegisterService {
             }
         }
 
-        MachineRegister machineRegister = MachineRegister.builder().machineName(machineRegisterDto.getMachineName()).
-                machineRoomLocation(machineRegisterDto.getMachineRoomLocation()).
+        MachineRegister machineRegister = MachineRegister.builder().machineNickname(machineRegisterDto.getMachineNickname()).
                     tags(machineTags).
                         generatedKey(this.generateKey()).
                             build();

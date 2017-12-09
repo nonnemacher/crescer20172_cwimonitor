@@ -15,5 +15,5 @@ public class MachineInfoService {
     @Autowired
     MachineInfoRepository machineInfoRepository;
     
-    //TODO: PARA FUNCIONAR DEVEMOS FAZER O AUTH
+   
 }
