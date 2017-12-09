@@ -50,9 +50,8 @@ public class MachineRegister implements Serializable {
     @Column(nullable = false, length = 255, unique = true)
     private String generatedKey;
 
-    @NotNull(message = "Field must not be null")
     @Basic(optional = true)
-    @Column(nullable = false, length = 255)
+    @Column(nullable = true, length = 255)
     private String machineName;
     
     @NotNull(message = "Field must not be null")

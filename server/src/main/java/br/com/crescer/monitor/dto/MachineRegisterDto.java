@@ -23,7 +23,6 @@ public class MachineRegisterDto {
 
     private String machineNickname;
 
-    private double machineRoomLocation;
     
     List<String> tags;
 }

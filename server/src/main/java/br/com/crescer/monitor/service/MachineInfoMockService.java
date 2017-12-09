@@ -3,10 +3,12 @@ package br.com.crescer.monitor.service;
 import br.com.crescer.monitor.entity.MachineInfo;
 import br.com.crescer.monitor.service.contract.MachineInfoServiceContract;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  * @author Alvaro
  */
+@Service
 public class MachineInfoMockService implements MachineInfoServiceContract{
 
     @Override

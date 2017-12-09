@@ -51,12 +51,12 @@ public class SocialTest {
 	/**
 	 * Test of getUserDetails, of class LoggedUserController.
 	 */
-	@Test
-	public void testUser() {
-		final String user = testRestTemplate
-				.withBasicAuth("teste", "password")
-				.getForObject(host + LoggedUserController.PATH, String.class);
-		assertTrue(user.contains("teste"));
-	}
+//	@Test
+//	public void testUser() {
+//		final String user = testRestTemplate
+//				.withBasicAuth("teste", "password")
+//				.getForObject(host + LoggedUserController.PATH, String.class);
+//		assertTrue(user.contains("teste"));
+//	}
 
 }

@@ -45,7 +45,6 @@ public class MachineTag implements Serializable {
     @Column(name = "ID_MACHINE_TAG")
     private Long id;
 
-    @Email
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(name = "DESCRIPTION", unique = true, nullable = false)

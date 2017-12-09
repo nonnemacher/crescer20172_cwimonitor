@@ -1,3 +1,4 @@
+
 package br.com.crescer.monitor.service;
 
 import br.com.crescer.monitor.dto.MachineRegisterDto;
@@ -25,13 +26,15 @@ public class MachineRegisterService {
 
     @Autowired
     private final MachineTagRepository machineTagRepository;
-
+    
+    @Autowired
+    private final CollaboratorService collaboratorService;
     //Adiciona um registro sem nenhum grupo, 
 
     public Long save(MachineRegisterDto machineRegisterDto) {
 
         //TODO: ADICIONAR COLLABORATOR COMO COLLABORATOR LOGADO
-        
+               
         List<MachineTag> machineTags = new ArrayList<>();
 
         for (String c : machineRegisterDto.getTags()) {
@@ -45,7 +48,7 @@ public class MachineRegisterService {
             }
         }
 
-        MachineRegister machineRegister = MachineRegister.builder().machineNickname(machineRegisterDto.getMachineNickname()).
+        MachineRegister machineRegister = MachineRegister.builder().machineNickname(machineRegisterDto.getMachineNickname()).collaborator(collaboratorService.loggedCollaborator()).
                     tags(machineTags).
                         generatedKey(this.generateKey()).
                             build();
