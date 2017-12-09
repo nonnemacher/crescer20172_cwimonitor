@@ -72,5 +72,5 @@ public class Collaborator implements Serializable {
     @Basic(optional = false)
     @Column(name = "DS_PASS", nullable = false)
     private String pass;
-
+    
 }

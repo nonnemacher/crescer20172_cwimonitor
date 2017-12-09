@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * @author carloshenrique
  */
 @Service
-public class SocialUserDetailsService implements UserDetailsService {
+public class MonitorUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
