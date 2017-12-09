@@ -42,16 +42,16 @@ public class MachineInfo implements Serializable {
     @SequenceGenerator(name = SQ_NAME, sequenceName = SQ_NAME, allocationSize = 1)
     @Column(name = "ID_MACHINE_INFO")
     private Long id;
-
-    @NotNull(message = "Field must not be null")
-    @Basic(optional = false)
-    @Column(nullable = false)
-    private double ramUsagePercent;
-
+    
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(nullable = false, length = 255)
     private String generatedKey;
+
+    @NotNull(message = "Field must not be null")
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private double ramUsagePercent;    
 
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
@@ -65,7 +65,7 @@ public class MachineInfo implements Serializable {
 
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
-    @Column(name = "BIRTHDATE", nullable = false)
+    @Column(name = "EXEC_TIME", nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime execTime;
 

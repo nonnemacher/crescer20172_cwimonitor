@@ -49,12 +49,6 @@ public class Collaborator implements Serializable {
     @Column(name = "NAME", nullable = false, length = 255)
     private String name;
 
-
-    @Size(max = 512)
-    @Basic(optional = true)
-    @Column(name = "PROFILE_PIC", nullable = true, length = 512)
-    private String profilePic;
-
     @Email
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
@@ -64,7 +58,7 @@ public class Collaborator implements Serializable {
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(name = "BIRTHDATE", nullable = false)
-    @DateTimeFormat(iso = DATE)
+    @DateTimeFormat(iso = DATE )
     private LocalDate birthdate;
 
     @NotNull(message = "Field must not be null")
@@ -72,5 +66,5 @@ public class Collaborator implements Serializable {
     @Basic(optional = false)
     @Column(name = "DS_PASS", nullable = false)
     private String pass;
-
+    
 }

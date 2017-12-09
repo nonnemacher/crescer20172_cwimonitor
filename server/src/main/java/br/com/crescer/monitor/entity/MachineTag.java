@@ -20,6 +20,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Email;
@@ -29,6 +30,7 @@ import org.hibernate.validator.constraints.Email;
  * @author Leonardo Bork
  */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -43,7 +45,6 @@ public class MachineTag implements Serializable {
     @Column(name = "ID_MACHINE_TAG")
     private Long id;
 
-    @Email
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(name = "DESCRIPTION", unique = true, nullable = false)

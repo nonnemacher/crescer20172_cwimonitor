@@ -21,6 +21,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -29,6 +30,7 @@ import lombok.NoArgsConstructor;
  * @author Leonardo Bork
  */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -48,15 +50,14 @@ public class MachineRegister implements Serializable {
     @Column(nullable = false, length = 255, unique = true)
     private String generatedKey;
 
-    @NotNull(message = "Field must not be null")
-    @Basic(optional = false)
-    @Column(nullable = false, length = 255)
+    @Basic(optional = true)
+    @Column(nullable = true, length = 255)
     private String machineName;
-
+    
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(nullable = false, length = 255)
-    private double machineRoomLocation;
+    private String machineNickname;
 
     @ManyToOne
     @JoinColumn(name = "ID_COLLABORATOR")
@@ -70,4 +71,5 @@ public class MachineRegister implements Serializable {
     
     @ManyToMany(mappedBy = "machines")
     private List<MachineMonitoringGroup> groups;
+    
 }

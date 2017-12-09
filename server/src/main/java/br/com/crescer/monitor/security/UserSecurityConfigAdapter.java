@@ -16,36 +16,26 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * @author carloshenrique
- */
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
-public class SocialWebSecurityConfig extends WebSecurityConfigurerAdapter {
+ */ 
+public class UserSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
 
 	@Value("${social.security.public:/health}")
 	private String[] securityPublic;
 
 	@Autowired
-	private SocialUserDetailsService userDetailsService;
+	private MonitorUserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity
-				.authorizeRequests().anyRequest().authenticated()
-				.and()
-				.httpBasic()
-				.and()
-				.cors()
-				.and()
+		httpSecurity.authorizeRequests().anyRequest().authenticated()
+                                .and().httpBasic()
+				.and().cors().and()
 				.csrf().disable();
 	}
 
 	@Override
 	public void configure(WebSecurity webSecurity) throws Exception {
-		webSecurity
-				.ignoring()
-				.antMatchers(securityPublic)
-				// Swagger
-				.antMatchers(
+		webSecurity.ignoring().antMatchers(securityPublic).antMatchers(
 						"/v2/api-docs",
 						"/configuration/ui",
 						"/swagger-resources/**",
@@ -69,5 +59,4 @@ public class SocialWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void setDetailsService(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
-
 }
