@@ -53,7 +53,7 @@ public class Alert implements Serializable {
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(name = "EMAIL", nullable = false, length = 120)
-    private String emal;
+    private String email;
 
     @ManyToOne
     @JoinColumn(name = "ID_MACHINE_REGISTER")
