@@ -23,7 +23,7 @@ public class Run {
 //        int digesterTimeInt = Integer.parseInt(digesterTime);
         final InfoRepository infoRepository = new InfoRepositorySQLiteImplementation();
 
-        String announcerEndPoint = "http://localhost:9090/machineregister/public";
+        String announcerEndPoint = "http://localhost:9090/machineregister/machinename";
         String digesterEndpoint = "http://localhost:9090/machineinfo/public";
         int collectorTimeInt = 1000;
         int digesterTimeInt = 5000;

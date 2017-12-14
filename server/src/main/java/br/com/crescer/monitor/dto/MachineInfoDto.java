@@ -22,9 +22,13 @@ public class MachineInfoDto {
 
     private String generatedKey;
 
-    private double cpu;
-
     private double memory;
+    
+    private double totalMemory;
+    
+    private double cpu;
+    
+    private double numberOfCores;
 
     private double freeDisk;
     

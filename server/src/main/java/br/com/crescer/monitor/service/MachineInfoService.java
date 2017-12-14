@@ -34,10 +34,12 @@ public class MachineInfoService {
                 .toLocalDateTime();
 
         final MachineInfo info = MachineInfo.builder()
+                .ramUsagePercent(machineInfoDto.getMemory())
+                .totalMemory(machineInfoDto.getTotalMemory())
                 .cpuUsagePercent(machineInfoDto.getCpu())
+                .numberOfCores(machineInfoDto.getNumberOfCores())
                 .freeDisk(machineInfoDto.getFreeDisk())
                 .occupiedDisk(machineInfoDto.getOccupiedDisk())
-                .ramUsagePercent(machineInfoDto.getMemory())
                 .execTime(date)
                 .machineRegister(machineRegister)
                 .build();
