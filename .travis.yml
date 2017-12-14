@@ -1,15 +1,14 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.organization=nonnemacher-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONAR_TOKEN}
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.organization=nonnemacher-github
+  -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONAR_TOKEN}
 cache:
   directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
+  - "$HOME/.m2/repository"
+  - "$HOME/.sonar/cache"
 notifications:
-  slack: 
-  rooms:
-    - 'cwi-crescer-2017-2:${SLACK_TOKEN}#cwimonitor'
-  on_success: always
-  on_failure: always
+  slack:
+    rooms:
+      secure: T4zZGM3McvVajGJb913yolBwvwBFZZGyCgljNPYiDLzh2HYH8A5g+EtjLueQ642EBmVekmQBpJAioXVNxkikwDze3BVpC8guGtSuAGdd2UEiOBh5SdW0X+sKGVfEKm6cX7w5w305njCv2LeYei1IBFtDAzIVMFcxQqO6lQBQEkjto45kKtiojWIB5xL9tl0FOUTYaLABY2haGasxOVGDaikIeJkqAobiIsbNmXC0N6O7zHx8KjlGzdFsxv8KVd2rnChzkqJfcT9kxXXzRlqdtVivQPZBx4dtnBOdUioD2+BTVEhQ5h1C4ZI03zVx4qjUjV2gdyjSU6OB1EXoPo804MbBoajmg0Z2IangBVYjqtSKq5OaSlL5K8txDyw4sbjVWre2qq5MwR6ekg6rJCQWcozGG4niFAGhaobtIKRpYfB68CL+2fEmI4uWkSdHDRo2B3lnyXBQpgMIxInX6wa3oZujRvAlmA5WSkJHna2EOlQXTMWRZKimaxOmDDMp0SWNOaDY2OZxxfZTYWA5wD68R/tHru/B8MF7GHHxOSODQWWssoxs2Qeq8MMYYVD8S5sm3zi2AHaX5aRA1SX6GuJHi/ize5qK4yhkU7cMW4T0kjAgCVwCYkSGZ3crZqLTc9ORM6ahCzT9uLHzwhWafefes+9r0A565W+SoERgTQn9eHQ=
