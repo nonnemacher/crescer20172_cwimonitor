@@ -1,0 +1,46 @@
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label class="col-form-label" for="formGroupExampleInput">Pesquisar</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Pesquisar" name="search" ng-model="search">
+
+        </div>
+    </form>
+
+
+    <div class="fundo">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+                    <th scope="col">Nome</th>
+                    <th scope="col">Apelido</th>
+                    <th scope="col">Colaborador</th>
+                    <th scope="col">Adicionar</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="agente in agentes">
+                <tr>
+
+                    <td>{{agente.machineName}}</td>
+                    <td>{{agente.machineNickname}}</td>
+                    <td>{{agente.collaborator.name}}</td>
+                    <td>
+                        <a href ng-click="removerAgente(agente)">
+                            <button type="button" class="btn btn-danger btnDanger">Remover</button>
+                        </a>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="centralizar">
+            <nav aria-label="Page navigation ">
+                <ul class="pagination justify-content-center" uib-pagination ng-change="avancarPagina()" ng-model="nPagina" boundary-link-numbers="true"
+                    items-per-page="take" total-items="paginas" max-size="5" rotate="false" num-pages="numPages" previous-text="Anterior"
+                    next-text="Próximo" first-text="&laquo;" last-text="&raquo;"></ul>
+            </nav>
+        </div>
+    </div>
+</div>

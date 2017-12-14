@@ -1,140 +1,72 @@
 angular.module('app').factory('dadosService', function ($http) {
 
-    let urlBase = 'http://localhost:9090/dados/';
+    let urlBase = 'http://localhost:9090/graphs/';
 
-     //real
-     function cpuReal() {
-        return $http.get(urlBase+'real')       
+    //real
+    function dadosReal(id) {
+        return $http.get(urlBase+'realtime/'+id)
     }
 
-    function memoriaReal() {
-        return $http.get(urlBase+'real')       
-    }
 
-    function discoReal() {
-        return $http.get(urlBase+'real')       
-    }
-    
-    
+
     //15 minutos
-    function cpu15Minutos() {
-        return $http.get(urlBase)       
+    function dados15Minutos(id) {
+        return $http.get(urlBase+'last-15-min/'+id)
     }
 
-    function memoria15Minutos() {
-        return $http.get(urlBase)       
+    //30 minutos
+    function dados30Minutos(id) {
+        return $http.get(urlBase+'last-30-min/'+id)
     }
 
-    function disco15Minutos() {
-        return $http.get(urlBase)       
-    }
+
     //1 hora
-    function cpu1Hora() {
-        return $http.get(urlBase)       
+    function dados1Hora() {
+        return $http.get(urlBase+'last-hour/'+id)
     }
 
-    function memoria1Hora() {
-        return $http.get(urlBase)       
-    }
 
-    function disco1Hora() {
-        return $http.get(urlBase)       
-    }
     //6 hora
-    function cpu6Horas() {
-        return $http.get(urlBase)       
+    function dados6Horas() {
+        return $http.get(urlBase+'last-6-hours/'+id)
     }
 
-    function memoria6Horas() {
-        return $http.get(urlBase)       
-    }
-
-    function disco6Horas() {
-        return $http.get(urlBase)       
-    }
     //12 hora
-    function cpu12Horas() {
-        return $http.get(urlBase)       
+    function dados12Horas() {
+        return $http.get(urlBase+'last-12-hours/'+id)
     }
 
-    function memoria12Horas() {
-        return $http.get(urlBase)       
-    }
 
-    function disco12Horas() {
-        return $http.get(urlBase)       
-    }
     //24 horas
-    function cpu24Horas() {
-        return $http.get(urlBase)       
+    function dados24Horas() {
+        return $http.get(urlBase+'last-day/'+id)
     }
 
-    function memoria24Horas() {
-        return $http.get(urlBase)       
-    }
 
-    function disco24Horas() {
-        return $http.get(urlBase)       
-    }
     //7 dias
-    function cpu7Dias() {
-        return $http.get(urlBase)       
+    function dados7Dias() {
+        return $http.get()
     }
 
-    function memoria7Dias() {
-        return $http.get(urlBase)       
-    }
 
-    function disco7Dias() {
-        return $http.get(urlBase)       
-    }
     //30 dias
-    function cpu30Dias() {
-        return $http.get(urlBase)       
+    function dados30Dias() {
+        return $http.get(urlBase)
     }
 
-    function memoria30Dias() {
-        return $http.get(urlBase)       
-    }
 
-    function disco30Dias() {
-        return $http.get(urlBase)       
-    }
 
     return {
-        cpuReal : cpuReal ,
-        memoriaReal  : memoriaReal ,
-        discoReal  : discoReal ,
+        dadosReal: dadosReal,
+        dados15Minutos: dados15Minutos,
+        dados30Minutos: dados30Minutos,
+        dados1Hora: dados1Hora,
+        dados6Horas: dados6Horas,
+        dados12Horas: dados12Horas,
+        dados1Dia: dados24Horas,
+        dados7Dias: dados7Dias,
+        dados30Dias: dados30Dias
 
-        cpu15Minutos : cpu15Minutos,
-        memoria15Minutos : memoria15Minutos,
-        disco15Minutos : disco15Minutos,
-
-        cpu1Hora : cpu1Hora ,
-        memoria1Hora  : memoria1Hora ,
-        disco1Hora  : disco1Hora,
-
-        cpu6Horas : cpu6Horas,
-        memoria6Horas : memoria6Horas,
-        disco6Horas : disco6Horas,
-
-        cpu12Horas : cpu12Horas,
-        memoria12Horas : memoria12Horas,
-        disco12Horas : disco12Horas,
-
-        cpu1Dia : cpu24Horas,
-        memoria1Dia  : memoria24Horas,
-        disco1Dia : disco24Horas,
-
-        cpu7Dias : cpu7Dias,
-        memoria7Dias : memoria7Dias,
-        disco7Dias: disco7Dias,
-
-        cpu30Dias : cpu30Dias,
-        memoria30Dias : memoria30Dias,
-        disco30Dias: disco30Dias
-
-        
     };
 
 })

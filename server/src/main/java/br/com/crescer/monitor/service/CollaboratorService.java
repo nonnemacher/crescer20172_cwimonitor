@@ -15,6 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import br.com.crescer.monitor.dto.CollaboratorDto;
+import br.com.crescer.monitor.utility.BadRequestException;
 
 /**
  *
@@ -26,9 +28,14 @@ public class CollaboratorService {
     @Autowired
     CollaboratorRepository collaboratorRepository;
 
-    public Long save(Collaborator collaborator) {
+    public Long save(CollaboratorDto dto) {
+        if (collaboratorRepository.existsByEmailIgnoreCase(dto.getEmail())) {
+            throw new BadRequestException("Já existe um usuário com esse e-mail");
+        }
+
+        Collaborator collaborator = dto.converter(dto);
         collaborator.setEmail(collaborator.getEmail().toLowerCase());
-        
+
         final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         final String pass = collaborator.getPass();
         collaborator.setPass(passwordEncoder.encode(pass));

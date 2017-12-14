@@ -15,5 +15,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface CollaboratorRepository extends CrudRepository<Collaborator, Long> {
 
     Collaborator findByEmailIgnoreCase(String email);
-
+    
+     boolean existsByEmailIgnoreCase(String email);
 }

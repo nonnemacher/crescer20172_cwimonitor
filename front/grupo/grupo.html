@@ -1,0 +1,67 @@
+<div class="container">
+
+    <form>
+        <div class="form-group">
+            <label class="col-form-label" for="formGroupExampleInput">Pesquisar</label>
+            <input type="text" class="form-control pes" id="formGroupExampleInput" placeholder="Pesquisar" name="search" ng-model="search">
+
+        </div>
+    </form>
+
+    <a href="#!/registrarGrupo">
+        <button class="btn btn-success btnAdicionar ">Novo Grupo</button>
+    </a>
+
+    <div class="fundo">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+                    <th scope="col">Nome</th>
+                    <th scope="col">Icone</th>
+                    <th scope="col">Agentes</th>
+                    <th scope="col">Adicionar Agente</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="grupo in grupos">
+                <tr>
+
+                    <td>{{grupo.description}}</td>
+                    <td>
+                        <img ng-src="../img/{{grupo.groupIcon}}" class="rounded-circle" height="35" width="35">
+                    </td>
+                    <td>
+                        <a href="#!/listarAgentes/{{grupo.id}}">
+                            <button type="button" class="btn btn-primary btnlistar">Agentes</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#!/adicionarAgente/{{grupo.id}}">
+                            <button type="button" class="btn btn-success btnAdicionar">Adicionar Agentes</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#!/CadastroOrcamento/{{orcamento.Id}}">
+                            <button type="button" class="btn btn-primary btnEditar">Editar</button>
+                        </a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btnExcluir" ng-click="excluir(grupo)" value="Deletar">Excluir</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="centralizar">
+            <nav aria-label="Page navigation ">
+                <ul class="pagination justify-content-center" uib-pagination ng-change="avancarPagina()" ng-model="nPagina" boundary-link-numbers="true"
+                    items-per-page="take" total-items="paginas" max-size="5" rotate="false" num-pages="numPages" previous-text="Anterior"
+                    next-text="Próximo" first-text="&laquo;" last-text="&raquo;"></ul>
+            </nav>
+        </div>
+    </div>
+
+
+</div>

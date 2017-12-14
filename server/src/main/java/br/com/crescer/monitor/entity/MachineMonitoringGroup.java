@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,6 +32,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "MACHINE_MONITORING_GROUP")
 public class MachineMonitoringGroup implements Serializable {
@@ -61,5 +63,13 @@ public class MachineMonitoringGroup implements Serializable {
             inverseJoinColumns = {
                 @JoinColumn(name = "FK_REGISTER")})
     private List<MachineRegister> machines;
+    
+     public void addMachineRegister(MachineRegister machine){
+        this.machines.add(machine);
+    }
+     
+     public void removeMachineRegister(MachineRegister machine){
+        this.machines.remove(machine);
+    } 
 }
 

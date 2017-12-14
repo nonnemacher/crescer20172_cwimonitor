@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @author carloshenrique
  */
 @RestController
-@RequestMapping(LoggedUserController.PATH)
+@RequestMapping("/user")
 public class LoggedUserController {
 
-    public static final String PATH = "/logged-user";
+    
 
-    @GetMapping
+    @GetMapping("/access")
     public User getUserDetails(Authentication authentication) {
         return Optional.ofNullable(authentication)
                 .map(Authentication::getPrincipal)

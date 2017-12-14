@@ -52,7 +52,7 @@
                             <transformers>
                                 <!-- add Main-Class to manifest file -->
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>br.com.cwi.monitor.agent.RunOshi</mainClass>
+                                    <mainClass>br.com.cwi.monitor.agent.Run</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -61,6 +61,7 @@
             </plugin>
         </plugins>
     </build>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>

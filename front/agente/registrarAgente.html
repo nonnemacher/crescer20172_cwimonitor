@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="login">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Agente</div>
+            <div class="card-body">
+                <form novalidate name="formRegistrar" ng-submit="salvar(agente)">
+                    <div class="form-group">
+                        <label for="apelido">Apelido do agente</label>
+                        <input class="form-control" id="apelido" ng-model="agente.machineNickname" type="text" placeholder="APELIDO">
+                    </div>
+                    <tags-input ng-model="agente.tags">
+                            <auto-complete source="loadTags($query)"></auto-complete>
+                          </tags-input>
+                    
+                    <button class="btn btn-primary cadastrar btn-block ">Cadastrar</button>
+                    <a class="btn btn-light voltar btn-block" href="/#!/agente">Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

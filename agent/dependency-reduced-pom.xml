@@ -18,7 +18,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>br.com.cwi.monitor.agent.RunOshi</mainClass>
+                  <mainClass>br.com.cwi.monitor.agent.Run</mainClass>
                 </transformer>
               </transformers>
             </configuration>

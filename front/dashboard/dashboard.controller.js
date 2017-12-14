@@ -1,320 +1,301 @@
-angular.module('app').controller('DashBoardController', function ($scope, authService, dadosService) {
+angular.module('app').controller('DashBoardController', function ($scope, authService, dadosService, $routeParams) {
 
-  function atualizarChart(Titulo,Tempo,EixoX, EixoY,UnidadeMedida){
-    return chart= {
-      "caption": Titulo,
-      "subCaption": Tempo,
-      "xAxisName": EixoX,
-      "yAxisName": EixoY,
-      "lineThickness": "2",
-      "paletteColors": "#0075c2",
-      "baseFontColor": "#333333",
-      "baseFont": "Helvetica Neue,Arial",
-      "captionFontSize": "14",
-      "subcaptionFontSize": "14",
-      "subcaptionFontBold": "0",
-      "showBorder": "0",
-      "bgColor": "#ffffff",
-      "showShadow": "0",
-      "numberPrefix": "",
-      "NumberSuffix": UnidadeMedida,
-      "canvasBgColor": "#ffffff",
-      "canvasBorderAlpha": "0",
-      "divlineAlpha": "100",
-      "divlineColor": "#999999",
-      "divlineThickness": "1",
-      "divLineIsDashed": "1",
-      "divLineDashLen": "1",
-      "divLineGapLen": "1",
-      "showXAxisLine": "1",
-      "xAxisLineThickness": "1",
-      "xAxisLineColor": "#999999",
-      "showAlternateHGridColor": "0"
+  $scope.isAgente = !!$routeParams.idAgente;
+
+  if ($scope.isAgente) {
+
+    function atualizarChartLineMemoria(Tempo, EixoX) {
+      return chart = {
+        "caption": "Memória",
+        "subCaption": Tempo,
+        "showvalues": "1",
+        "yaxisname": "Porcentagem",
+        "xAxisName": EixoX,
+        "numdivlines": "0",
+        "canvasborderalpha": "0",
+        "canvasbgalpha": "0",
+        "numvdivlines": "5",
+        "plotgradientcolor": "679436",
+        "drawanchors": "1",
+        "plotfillangle": "90",
+        "plotfillalpha": "63",
+        "vdivlinealpha": "22",
+        "vdivlinecolor": "6281B5",
+        "bgcolor": "ffffff",
+        "showplotborder": "0",
+        "numbersuffix": "%",
+        "bordercolor": "ffb822",
+        "borderalpha": "100",
+        "canvasbgratio": "0",
+        "basefontcolor": "37444A",
+        "tooltipbgcolor": "37444A",
+        "tooltipbordercolor": "37444A",
+        "tooltipcolor": "FFFFFF",
+        "basefontsize": "8",
+        "outcnvbasefontsize": "11",
+        "showyaxisvalues": "0",
+        "animation": "1",
+        "palettecolors": "679436",
+        "showtooltip": "1",
+        "showborder": "0"
+      }
+
     }
 
-  }
+    function atualizarChartLineCpu(Tempo, EixoX) {
+      return chart = {
+        "caption": "Cpu",
+        "subCaption": Tempo,
+        "showvalues": "1",
+        "yaxisname": "Porcentagem",
+        "xAxisName": EixoX,
+        "numdivlines": "0",
+        "canvasborderalpha": "0",
+        "canvasbgalpha": "0",
+        "numvdivlines": "5",
+        "plotgradientcolor": "0000FF",
+        "drawanchors": "1",
+        "plotfillangle": "90",
+        "plotfillalpha": "63",
+        "vdivlinealpha": "22",
+        "vdivlinecolor": "6281B5",
+        "bgcolor": "716aca,B3CCE1",
+        "showplotborder": "0",
+        "numbersuffix": "%",
+        "bordercolor": "9DBCCC",
+        "borderalpha": "100",
+        "canvasbgratio": "0",
+        "basefontcolor": "37444A",
+        "tooltipbgcolor": "37444A",
+        "tooltipbordercolor": "37444A",
+        "tooltipcolor": "FFFFFF",
+        "basefontsize": "8",
+        "outcnvbasefontsize": "11",
+        "showyaxisvalues": "0",
+        "animation": "1",
+        "palettecolors": "0080C0",
+        "showtooltip": "1",
+        "showborder": "0"
 
-  $scope.disco = {
-    chart: {
-      "caption": "Disco",
-      "subCaption": "Tempo Real",
-      "xAxisName": "Segundos",
-      "yAxisName": "Porcentagem",
-      "lineThickness": "2",
-      "paletteColors": "#0075c2",
-      "baseFontColor": "#333333",
-      "baseFont": "Helvetica Neue,Arial",
-      "captionFontSize": "14",
-      "subcaptionFontSize": "14",
-      "subcaptionFontBold": "0",
-      "showBorder": "0",
-      "bgColor": "#ffffff",
-      "showShadow": "0",
-      "NumberPrefix": "",
-      "NumberSuffix": "gb",
-      "canvasBgColor": "#ffffff",
-      "canvasBorderAlpha": "0",
-      "divlineAlpha": "100",
-      "divlineColor": "#999999",
-      "divlineThickness": "1",
-      "divLineIsDashed": "1",
-      "divLineDashLen": "1",
-      "divLineGapLen": "1",
-      "showXAxisLine": "1",
-      "xAxisLineThickness": "1",
-      "xAxisLineColor": "#999999",
-      "showAlternateHGridColor": "0"
-    },
-    "data": [
-      {
-        "label": "23:00",
-        "value": "35"
-      },
-      {
-        "label": "23:15",
-        "value": "55"
-      },
-      {
-        "label": "23:30",
-        "value": "64"
-      },
-      {
-        "label": "23:45",
-        "value": "90"
-      },
-      {
-        "label": "00:00",
-        "value": "88"
+      }
+    }
+
+    function atualizarChartPie(tempo) {
+      return chart = {
+        "caption": "Disco",
+        "subcaption": tempo,
+        "numbersuffix": "%",
+        "startingangle": "310",
+        "decimals": "0",
+        "defaultcenterlabel": "Total revenue: $60K",
+        "centerlabel": "Revenue from $label: $value",
+        "theme": "fint",
+        "showlegend": "1",
+        "legendborder": "0",
+        "legendposition": "bottom",
+        "enablesmartlabels": "1",
+        "use3dlighting": "0",
+        "showshadow": "0",
+        "legendbgcolor": "#CCCCCC",
+        "legendbgalpha": "20",
+        "legendborderalpha": "0",
+        "legendshadow": "0",
+        "legendnumcolumns": "3",
+        "palettecolors": "#020100,#F2E94E"
+      }
+    }
+
+    $scope.disco = {
+      "chart": {
+        "caption": "Disco",
+        "subcaption": "Tempo real",
+        "numbersuffix": "%",
+        "startingangle": "310",
+        "decimals": "0",
+        "defaultcenterlabel": "Total revenue: $60K",
+        "centerlabel": "Revenue from $label: $value",
+        "theme": "fint",
+        "showlegend": "1",
+        "legendborder": "0",
+        "legendposition": "bottom",
+        "enablesmartlabels": "1",
+        "use3dlighting": "0",
+        "showshadow": "0",
+        "legendbgcolor": "#CCCCCC",
+        "legendbgalpha": "20",
+        "legendborderalpha": "0",
+        "bgcolor": "ffffff",
+        "legendshadow": "0",
+        "legendnumcolumns": "3",
+        "palettecolors": "#020100,#F2E94E"
       }
 
-    ],
-    "trendlines": [
-      {
-        "line": [
-          {
-            "startvalue": "45",
-            "color": "#1aaf5d",
-            "displayvalue": "Média",
-            "valueOnRight": "1",
-            "thickness": "2"
-          }
-        ]
+    };
+
+
+
+    $scope.memoria = {
+      "chart": {
+        "caption": "Memória",
+        "subCaption": "Tempo Real",
+        "showvalues": "1",
+        "yaxisname": "Porcentagem",
+        "xAxisName": "Segundos",
+        "numdivlines": "0",
+        "canvasborderalpha": "0",
+        "canvasbgalpha": "0",
+        "numvdivlines": "5",
+        "plotgradientcolor": "679436",
+        "drawanchors": "1",
+        "plotfillangle": "90",
+        "plotfillalpha": "63",
+        "vdivlinealpha": "22",
+        "vdivlinecolor": "6281B5",
+        // "bgcolor": "020100,FDFFFC",
+        "bgcolor": "ffffff",
+        "showplotborder": "0",
+        "numbersuffix": "%",
+        "bordercolor": "ffb822",
+        "borderalpha": "100",
+        "canvasbgratio": "0",
+        "basefontcolor": "37444A",
+        "tooltipbgcolor": "37444A",
+        "tooltipbordercolor": "37444A",
+        "tooltipcolor": "FFFFFF",
+        "basefontsize": "8",
+        "outcnvbasefontsize": "11",
+        "showyaxisvalues": "0",
+        "animation": "1",
+        "palettecolors": "679436",
+        "showtooltip": "1",
+        "showborder": "0"
       }
-    ]
-  };
+    }
 
 
-
-  $scope.memoria = {
-    chart: {
-      "caption": "Memória",
-      "subCaption": "Tempo Real",
-      "xAxisName": "Segundos",
-      "yAxisName": "Megabites",
-      "lineThickness": "2",
-      "paletteColors": "#0075c2",
-      "baseFontColor": "#333333",
-      "baseFont": "Helvetica Neue,Arial",
-      "captionFontSize": "14",
-      "subcaptionFontSize": "14",
-      "subcaptionFontBold": "0",
-      "showBorder": "0",
-      "bgColor": "#ffffff",
-      "showShadow": "0",
-      "numberPrefix": "",
-      "NumberSuffix": "mb",
-      "canvasBgColor": "#ffffff",
-      "canvasBorderAlpha": "0",
-      "divlineAlpha": "100",
-      "divlineColor": "#999999",
-      "divlineThickness": "1",
-      "divLineIsDashed": "1",
-      "divLineDashLen": "1",
-      "divLineGapLen": "1",
-      "showXAxisLine": "1",
-      "xAxisLineThickness": "1",
-      "xAxisLineColor": "#999999",
-      "showAlternateHGridColor": "0"
-    },
-    
-    "trendlines": [
-      {
-        "line": [
-          {
-            "startvalue": "45",
-            "color": "#1aaf5d",
-            "displayvalue": "Média",
-            "valueOnRight": "1",
-            "thickness": "2"
-          }
-        ]
+    $scope.cpu = {
+      "chart": {
+        "caption": "Cpu",
+        "subCaption": "Tempo Real",
+        "showvalues": "1",
+        "yaxisname": "Porcentagem",
+        "xAxisName": "Segundos",
+        "numdivlines": "0",
+        "canvasborderalpha": "0",
+        "canvasbgalpha": "0",
+        "numvdivlines": "5",
+        "plotgradientcolor": "0000FF",
+        "drawanchors": "1",
+        "plotfillangle": "90",
+        "plotfillalpha": "63",
+        "vdivlinealpha": "22",
+        "vdivlinecolor": "6281B5",
+        // "bgcolor": "716aca,B3CCE1",
+        "bgcolor": "ffffff",
+        "showplotborder": "0",
+        "numbersuffix": "%",
+        "bordercolor": "9DBCCC",
+        "borderalpha": "100",
+        "canvasbgratio": "0",
+        "basefontcolor": "37444A",
+        "tooltipbgcolor": "37444A",
+        "tooltipbordercolor": "37444A",
+        "tooltipcolor": "FFFFFF",
+        "basefontsize": "8",
+        "outcnvbasefontsize": "11",
+        "showyaxisvalues": "0",
+        "animation": "1",
+        "palettecolors": "0080C0",
+        "showtooltip": "1",
+        "showborder": "0"
       }
-    ]
-  };
+    }
+    function realTime() {
+      let promiseDados = dadosService.dadosReal($routeParams.idAgente);
+      promise(promiseDados, 1)
+    }
 
 
-  $scope.cpu = {
-    chart: {
-      "caption": "Cpu",
-      "subCaption": "Tempo Real",
-      "xAxisName": "Segundos",
-      "yAxisName": "Porcentagem",
-      "lineThickness": "2",
-      "paletteColors": "#0075c2",
-      "baseFontColor": "#333333",
-      "baseFont": "Helvetica Neue,Arial",
-      "captionFontSize": "14",
-      "subcaptionFontSize": "14",
-      "subcaptionFontBold": "0",
-      "showBorder": "0",
-      "bgColor": "#ffffff",
-      "showShadow": "0",
-      "numberPrefix": "",
-      "NumberSuffix": "%",
-      "canvasBgColor": "#ffffff",
-      "canvasBorderAlpha": "0",
-      "divlineAlpha": "100",
-      "divlineColor": "#999999",
-      "divlineThickness": "1",
-      "divLineIsDashed": "1",
-      "divLineDashLen": "1",
-      "divLineGapLen": "1",
-      "showXAxisLine": "1",
-      "xAxisLineThickness": "1",
-      "xAxisLineColor": "#999999",
-      "showAlternateHGridColor": "0"
-    },
-   
-    "trendlines": [
-      {
-        "line": [
-          {
-            "startvalue": "45",
-            "color": "#1aaf5d",
-            "displayvalue": "Média",
-            "valueOnRight": "1",
-            "thickness": "2"
-          }
-        ]
-      }
-    ]
-  };
-  function realTime(){
-    let promiseCpu = dadosService.cpuReal()
-    let promiseMemoria = dadosService.memoriaReal()
-    let promiseDisco = dadosService.discoReal()
-    promise(promiseCpu,promiseMemoria,promiseDisco,1)
-
-  }
-  realTime();
-  
-  var real = setInterval(realTime, 5000)
-  
-  $scope.real = function (){
     realTime();
-    real = setInterval(realTime, 5000)
-  }
-  
 
-  
-  $scope.hora = function (horario) {
-    clearInterval(real);
+    var real = setInterval(realTime, 2000)
 
-    if (horario === 1) {
-      var promiseCpu = dadosService.cpu15Minutos()
-      var promiseMemoria = dadosService.memoria15Minutos()
-      var promiseDisco = dadosService.disco15Minutos()
-      var tempo = '15 minutos atrás';
-      var eixoX='Segundos';
+    $scope.real = function () {
+      realTime();
+      real = setInterval(realTime, 2000)
+    }
 
-    } else if (horario === 2) {
-      var promiseCpu = dadosService.cpu1Hora()
-      var promiseMemoria = dadosService.memoria1Hora()
-      var promiseDisco = dadosService.disco1Hora()
-      var tempo = 'Uma hora atrás';
-      var eixoX='Minutos';
-      
-    } else if (horario === 3) {
-      var promiseCpu = dadosService.cpu6Horas()
-      var promiseMemoria = dadosService.memoria6Horas()
-      var promiseDisco = dadosService.disco6Horas()
-      var tempo = 'Seis horas atrás';
-      var eixoX='Horas';
 
-    } else if (horario === 4) {
-      var promiseCpu = dadosService.cpu12Horas()
-      var promiseMemoria = dadosService.memoria12Horas()
-      var promiseDisco = dadosService.disco12Horas()
-      var tempo = '12 horas atrás';
-      var eixoX='Horas';
 
-    } else if (horario === 5) {
-      var promiseCpu = dadosService.cpu1Dia()
-      var promiseMemoria = dadosService.memoria1Dia()
-      var promiseDisco = dadosService.disco1Dia()
-      tempo = 'Um dia atrás';
-      eixoX='Horas';
+    $scope.hora = function (horario) {
+      clearInterval(real);
 
-    } else if (horario === 6) {
-      var promiseCpu = dadosService.cpu7Dias()
-      var promiseMemoria = dadosService.memoria7Dias()
-      var promiseDisco = dadosService.disco7Dias()
-      var  tempo = 'Sete dias atrás';
-      var  eixoX='Dias';
+      if (horario === 1) {
+        var promiseDados = dadosService.dados15Minutos($routeParams.idAgente)
+        var tempo = '15 minutos atrás';
+        var eixoX = 'Minutos';
 
-    } else if (horario === 7) {
-      var promiseCpu = dadosService.cpu30Dias()
-      var promiseMemoria = dadosService.memoria30Dias()
-      var promiseDisco = dadosService.disco30Dias()
-      var tempo = '30 dias atrás';
-      var eixoX='Dias';
+      } else if (horario === 2) {
+        var promiseDados = dadosService.dados1Hora()
+        var tempo = 'Uma hora atrás';
+        var eixoX = 'Minutos';
+
+      } else if (horario === 3) {
+        var promiseDados = dadosService.dados6Horas()
+        var tempo = 'Seis horas atrás';
+        var eixoX = 'Horas';
+
+      } else if (horario === 4) {
+        var promiseDados = dadosService.dados12Horas()
+        var tempo = '12 horas atrás';
+        var eixoX = 'Horas';
+
+      } else if (horario === 5) {
+        var promiseDados = dadosService.dados1Dia()
+        tempo = 'Um dia atrás';
+        eixoX = 'Horas';
+
+      } else if (horario === 6) {
+        var promiseDados = dadosService.dados30Minutos()
+        var tempo = '30 minutos atrás';
+        var eixoX = 'Minutos';
+
+      }
+      $scope.memoria.chart = atualizarChartLineMemoria(tempo, eixoX);
+      $scope.cpu.chart = atualizarChartLineCpu(tempo, eixoX);
+
+      $scope.disco.chart = atualizarChartPie(tempo);
+      promise(promiseDados, 0)
 
     }
-    $scope.memoria.chart =  atualizarChart('Memória',tempo,eixoX,'Magabites','mb');
-    $scope.cpu.chart =  atualizarChart('Cpu',tempo,eixoX,'Porcentagem','%');
-    
-    $scope.disco.chart =  atualizarChart('Disco',tempo,eixoX,'Gigabites','gb');
-    promise(promiseCpu,promiseMemoria,promiseDisco,0)
-    
-}
-    // element.horario[3]+':'+element.horario[4]
-    function promise(promiseCpu,promiseMemoria,promiseDisco,isReal){
 
-      promiseCpu.then(function (response1) {
-        let dataResponse1 = [];
-        response1.data.forEach(element => {
-          
-          dataResponse1.push({ label: isReal === 1 ?  '' :element.horario[3]+':'+element.horario[4], value: element.quantidade});
-        });
-        $scope.cpu.data = dataResponse1;
-        
-      });
-  
-      promiseMemoria.then(function (response2) {
-        let dataResponse2 = [];
-        response2.data.forEach(element => {
-          
-          dataResponse2.push({ label: isReal === 1 ?  '' :element.horario[3]+':'+element.horario[4], value: element.quantidade });
-        });
-        $scope.memoria.data = dataResponse2;
-  
-      });
-  
-      promiseDisco.then(function (response) {
-        let dataResponse = [];
+    function promise(promiseDados, isReal) {
+
+      promiseDados.then(function (response) {
+        var dataResponseCpu = [];
+        var dataResponseDisco = [];
+        var dataResponseMemoria = [];
+        console.log(response.data);
+
+        dataResponseDisco.push(!!isReal ?  { label: 'Usado', value: response.data[0].occupiedDiskAvg } :{ label: 'Usado', value: response.data[0].id.occupiedDiskAvg });
+        dataResponseDisco.push(!!isReal ?  { label: 'Usado', value: response.data[0].freeDiskAvg } :{ label: 'Usado', value: response.data[0].id.freeDiskAvg });
         response.data.forEach(element => {
-          dataResponse.push({ label: isReal === 1 ?  '' :element.horario[3]+':'+element.horario[4], value: element.quantidade });
+
+          dataResponseCpu.push(!!isReal ?  {  label: '', value: element.cpuAvg}:{  label: '', value: element.id.cpuAvg });
+          dataResponseMemoria.push(!!isReal ?  {  label: '', value: element.ramAvg}:{  label: '', value: element.id.ramAvg});
+
         });
-        $scope.disco.data = dataResponse;
-  
+        console.log(dataResponseMemoria)
+        $scope.cpu.data = dataResponseCpu;
+        $scope.memoria.data = dataResponseMemoria;
+        $scope.disco.data = dataResponseDisco;
       });
+
+//!!isReal ? '' : element.execTime[3] + ':' + element.execTime[4]
     }
 
-    
+  }
 
-    
-
-  
 });
 
 

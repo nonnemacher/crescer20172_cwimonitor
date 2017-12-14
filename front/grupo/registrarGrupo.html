@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="login">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Adicionar Grupo</div>
+            <div class="card-body">
+                <form novalidate name="formRegistrar" ng-submit="salvar(grupo)">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input class="form-control" id="nome" ng-model="grupo.description" type="text" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="file" name="pic" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-success btnAdicionar" href ng-click="addFoto()">Adicionar foto</a>
+                    </div>
+                    <button class="btn btn-primary btnFormulario btn-block ">Cadastrar</button>
+                    <a class="btn btn-light voltar btn-block" href="/#!/grupo">Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

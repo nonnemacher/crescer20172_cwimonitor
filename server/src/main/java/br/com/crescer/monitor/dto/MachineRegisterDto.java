@@ -21,8 +21,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MachineRegisterDto {
 
+    private Long id;
+
+    private String generatedKey;
+    
     private String machineNickname;
 
-    
+    private String name;
+
     List<String> tags;
 }

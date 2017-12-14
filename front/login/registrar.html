@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="login">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Registrar</div>
+            <div class="card-body">
+                <form novalidate name="formRegistrar">
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Nome</label>
+                                <input class="form-control" id="exampleInputEmail1" ng-model="usuario.nome" type="text" placeholder="NOME">
+                            </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input class="form-control" id="exampleInputEmail1" ng-model="usuario.email" type="email" aria-describedby="emailHelp" placeholder="EMAIL">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data">Data de Nascimento</label>
+                        <input ng-model="usuario.data" type="date" id="data" class="form-control" name="data" required>
+                        <span ng-if="formRegistrar.$submitted && formRegistrar.data.$invalid" class="avisos">Data de Nascimento obrigatória</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Senha</label>
+                        <input class="form-control" id="exampleInputPassword1" ng-model="usuario.senha" type="password" placeholder="SENHA">
+                    </div>
+                    <div class="form-group">
+                        <label for="senhaConfirmada">Confirmação da Senha</label>
+                        <input ng-model="usuario.SenhaConfirmada" id="senhaConfirmada" compare-to="usuario.senha" name="senhaConfirmada" class="form-control"
+                            placeholder="CONFIRMAÇÃO DA SENHA" type="password" required ng-minlength="3" ng-maxlength="128">
+                        <span ng-if="formRegistrar.$submitted && formRegistrar.senhaConfirmada.$invalid" class="avisos">Confirmação de senha inválida</span>
+                    </div>
+
+                    <a class="btn btn-primary cadastrar btn-block" href ng-click="registrar(usuario)">Cadastrar</a>
+                    <a class="btn btn-light voltar btn-block" href="/#!/login">Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

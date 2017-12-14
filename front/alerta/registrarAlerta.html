@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="login">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Alerta</div>
+            <div class="card-body">
+                <form novalidate name="formRegistrar" ng-submit="salvar(alerta)">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nome do alerta</label>
+                        <input class="form-control" id="exampleInputEmail1" ng-model="alerta.nome" type="text" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="metrica">Métrica:</label>
+                        <select class="form-control" name="modelo" ng-model="alerta.metrica" name="metrica" id="metrica" required>
+
+                            <option ng-value="'Cpu'">Cpu</option>
+                            <option ng-value="'Disco'">Disco</option>
+                            <option ng-value="'Memória'">Memória</option>
+
+                        </select>
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" ng-model="alerta.isGrupo" name="agenteGrupo" ng-change="grupo()" ng-value="true">Grupo
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" ng-model="alerta.isGrupo" name="agenteGrupo" ng-change="agente()" ng-value="false">Agente
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="grupo">Grupo:</label>
+                        <select class="form-control" name="modelo" ng-model="alerta.agenteOuGrupo" name="modelo" id="grupo" ng-options="grupo.id as grupo.description for grupo in gruposOuAgentes">
+
+                            <option value="">---Grupo ou Agente---</option>
+
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="valor">Valor</label>
+                        <input class="form-control" id="valor" ng-model="alerta.valor" type="number" placeholder="Valor" min="1" max="100"/>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" ng-model="alerta.isMaior" name="menorMaior" id="inlineRadio1" ng-value="true">Maior
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" ng-model="alerta.isMaior" name="menorMaior" id="inlineRadio2" ng-value="false">Menor
+                        </label>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="tempo">Tempo:</label>
+                        <input type="time" ng-model="alerta.horario" class="form-control" id="tempo" name="usr_time">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input class="form-control" id="exampleInputEmail1" ng-model="alerta.email" type="email" aria-describedby="emailHelp" placeholder="Email">
+                    </div>
+
+                    <button class="btn btn-primary btnFormulario  btn-block ">Cadastrar</button>
+                    <a class="btn btn-light voltar btn-block" href="/#!/alerta">Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,3 @@
-
 package br.com.cwi.monitor.agent.persistence.repository;
 
 import br.com.cwi.monitor.agent.entity.Info;
@@ -12,4 +11,6 @@ public interface InfoRepository extends Repository<Info>{
     void delete(Info info);
     void delete(List<Info> infos);
     List<Info> retrieve(int n);
+    void createTable();
+    void dropTable();
 }

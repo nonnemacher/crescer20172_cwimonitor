@@ -4,10 +4,14 @@
  * and open the template in the editor.
  */
 package br.com.crescer.monitor.entity;
+import br.com.crescer.monitor.utility.LocalDateConverter;
+import br.com.crescer.monitor.utility.LocalDateConverter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -17,11 +21,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Email;
-import org.springframework.format.annotation.DateTimeFormat;
-import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 
 
 /**
@@ -32,6 +35,7 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "COLLABORATOR")
 public class Collaborator implements Serializable {
 
@@ -58,7 +62,8 @@ public class Collaborator implements Serializable {
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(name = "BIRTHDATE", nullable = false)
-    @DateTimeFormat(iso = DATE )
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @Convert(converter = LocalDateConverter.class)
     private LocalDate birthdate;
 
     @NotNull(message = "Field must not be null")

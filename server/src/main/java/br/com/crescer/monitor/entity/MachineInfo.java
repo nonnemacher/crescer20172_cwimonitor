@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.crescer.monitor.entity;
 
 import java.io.Serializable;
@@ -18,17 +13,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import static javax.xml.datatype.DatatypeConstants.DATETIME;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- *
  * @author Leonardo Bork
  */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -45,23 +40,33 @@ public class MachineInfo implements Serializable {
     
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
-    @Column(nullable = false, length = 255)
-    private String generatedKey;
-
+    @Column(nullable = false)
+    private double ramUsagePercent; 
+    
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(nullable = false)
-    private double ramUsagePercent;    
+    private double totalMemory;   
 
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(nullable = false)
     private double cpuUsagePercent;
-
+    
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(nullable = false)
-    private double diskUsagePercent;
+    private double numberOfCores;
+    
+    @NotNull(message = "Field must not be null")
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private double freeDisk;
+    
+    @NotNull(message = "Field must not be null")
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private double occupiedDisk;
 
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
@@ -72,5 +77,4 @@ public class MachineInfo implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_MACHINE_REGISTER")
     private MachineRegister machineRegister;
-
 }
