@@ -34,7 +34,8 @@ public class Collector {
 
         @Override
         public void run() {
-            Info info = Info.builder()
+            Info info = Info.builder().numberOfCores(machineInfo.getNumberOfCores()).
+                    totalMemory(machineInfo.getTotalMemory())
                     .memory(machineInfo.getMemory())
                     .cpu(machineInfo.getCpu())
                     .freeDisk(machineInfo.getFreeDisk())

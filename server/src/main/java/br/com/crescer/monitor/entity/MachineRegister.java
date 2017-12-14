@@ -5,6 +5,7 @@
  */
 package br.com.crescer.monitor.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -53,7 +54,7 @@ public class MachineRegister implements Serializable {
     @Basic(optional = true)
     @Column(nullable = true, length = 255)
     private String machineName;
-    
+
     @NotNull(message = "Field must not be null")
     @Basic(optional = false)
     @Column(nullable = false, length = 255)
@@ -63,13 +64,16 @@ public class MachineRegister implements Serializable {
     @JoinColumn(name = "ID_COLLABORATOR")
     private Collaborator collaborator;
     
-    @OneToMany(mappedBy="machine")
+    @JsonIgnore
+    @OneToMany(mappedBy = "machine")
     private List<Alert> alerts;
-
+    
+    @JsonIgnore
     @ManyToMany(mappedBy = "machines")
     private List<MachineTag> tags;
     
+    @JsonIgnore
     @ManyToMany(mappedBy = "machines")
     private List<MachineMonitoringGroup> groups;
-    
+
 }

@@ -40,7 +40,7 @@ public class Announcer {
 
         @Override
         public void run() {
-            MachineRegister machineRegister = MachineRegister.builder().name(machineInfo.getComputerName()).generatedKey(agentKey).build();
+            MachineRegisterName machineRegister = MachineRegisterName.builder().name(machineInfo.getComputerName()).generatedKey(agentKey).build();
             Gson gson = new Gson();
             String json = gson.toJson(machineRegister);
                         
