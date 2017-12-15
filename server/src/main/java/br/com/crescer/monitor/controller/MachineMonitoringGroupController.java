@@ -37,26 +37,32 @@ public class MachineMonitoringGroupController {
 
     @PostMapping
     public ResponseEntity salvar(@RequestBody MachineMonitoringGroupDto request) throws IOException {
-
         if (request == null) {
             return badRequest().body("Parâmetro null.");
         }
 
         return ok(groupService.save(request));
-
     }
+    
+    @PostMapping("/file")
+    public void upload(@RequestParam("file") MultipartFile file) throws IOException {
+        File foto = new File("C:\\DEV\\willian.velhos\\tcc\\autenticacao\\img\\" + file.getOriginalFilename());
 
+        foto.createNewFile();
+        FileOutputStream fos = new FileOutputStream(foto);
+        fos.write(file.getBytes());
+        fos.close();
+    }
+       
+    
     @PutMapping("/removeMachineRegister")
     public void removeMachineRegister(@RequestParam Long group, @RequestParam Long machine) throws Exception {
-
         groupService.removeMachineRegister(group, machine);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-
         groupService.delete(id);
-
     }
 
     @GetMapping
@@ -70,26 +76,11 @@ public class MachineMonitoringGroupController {
 
     @PostMapping("/add")
     public void addMachineRegister(@RequestParam Long group, @RequestParam Long machine) throws Exception {
-
         groupService.addMachineRegister(group, machine);
     }
 
     @GetMapping("/all")
     public ResponseEntity allGroup() {
-
         return ok(groupService.allGroup());
     }
-
-    @PostMapping("/test")
-    public void upload(@RequestParam("file") MultipartFile file) throws IOException {
-
-        File foto = new File("C:\\DEV\\willian.velhos\\tcc\\autenticacao\\img\\" + file.getOriginalFilename());
-
-        foto.createNewFile();
-        FileOutputStream fos = new FileOutputStream(foto);
-        fos.write(file.getBytes());
-        fos.close();
-
-    }
-
 }

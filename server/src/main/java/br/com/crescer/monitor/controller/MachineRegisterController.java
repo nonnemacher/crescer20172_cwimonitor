@@ -76,9 +76,11 @@ public class MachineRegisterController {
         return machineRegisterService.findMachineWithoutGroup(id, new PageRequest(page, size, new Sort("id")));
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
+
         machineRegisterService.delete(id);
+        
     }
 
     @GetMapping("/group/{id}")
@@ -95,5 +97,4 @@ public class MachineRegisterController {
 
         return ok(machineRegisterService.findById(id));
     }
-
 }
