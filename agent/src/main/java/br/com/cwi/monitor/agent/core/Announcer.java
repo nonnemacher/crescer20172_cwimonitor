@@ -11,7 +11,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author Alvaro Classe responsável por comunicar ao servidor o nome da
+ * @author Alvaro 
+ * Classe responsável por comunicar ao servidor o nome da
  * máquina. Permanecerá executando um put no servidor tentando enviar o nome da
  * máquina até que este responda Ok.
  */
@@ -33,7 +34,7 @@ public class Announcer {
     }
 
     public void start() {
-        timer.scheduleAtFixedRate(new AnnouncerTask(), 0, milliseconds);
+        timer.scheduleAtFixedRate(new AnnouncerTask(), 4000l, milliseconds);
     }
 
     public class AnnouncerTask extends TimerTask {

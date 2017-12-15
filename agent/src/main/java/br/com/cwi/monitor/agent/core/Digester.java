@@ -33,7 +33,7 @@ public class Digester {
     }
 
     public void start() {
-        timer.scheduleAtFixedRate(new DigesterTask(), 0, milliseconds);
+        timer.scheduleAtFixedRate(new DigesterTask(), 5000l, milliseconds);
     }
 
     public class DigesterTask extends TimerTask {

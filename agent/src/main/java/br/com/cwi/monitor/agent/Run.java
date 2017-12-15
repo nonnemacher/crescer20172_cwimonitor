@@ -13,36 +13,33 @@ import java.util.Scanner;
 public class Run {
 
     public static void main(String[] args) {
-
-//        final String agentKey = System.getProperty("agent.key");
-//        final String endpoint = System.getProperty("agent.endpoint");
-//        final String collectorTime = System.getProperty("agent.collectorTime");
-//        final String digesterTime = System.getProperty("agent.digesterTime");
-//        Long agentKeyLong = Long.parseLong(agentKey);
-//        int collectorTimeInt = Integer.parseInt(collectorTime);
-//        int digesterTimeInt = Integer.parseInt(digesterTime);
         final InfoRepository infoRepository = new InfoRepositorySQLiteImplementation();
-
-        String announcerEndPoint = "http://localhost:9090/machineregister/machinename";
-        String digesterEndpoint = "http://localhost:9090/machineinfo/public";
-        int collectorTimeInt = 1000;
-        int digesterTimeInt = 5000;
-        
         infoRepository.createTable();
+        
+        String endPoint = System.getenv("AGENT-ENDPOINT");
+        if(endPoint == null) {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Insert the endpoint: ");
+            endPoint = in.nextLine();
+        }
+        
+        String key = System.getenv("AGENT-KEY");
+        if(key == null) {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Insert the key: ");
+            key = in.nextLine();
+        }
+        
+        String announcerEndPoint = endPoint + "/machineregister/machinename";
+        String digesterEndPoint = endPoint + "/machineinfo/public";      
+        
+        int announcerTime = 2000;
+        int collectorTime = 1000;
+        int digesterTime = 5000;
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Insert your key: ");
-        String agentKey = in.nextLine();
-        //System.out.println("Insert the endpoint: ");
-        //endpoint = in.nextLine();
-        //System.out.println("Insert the collector parameter in milliseconds: ");
-        //collectorTimeInt = in.nextInt();
-        //System.out.println("Insert the digestor parameter in milliseconds: ");
-        //digesterTimeInt = in.nextInt();
-
-        Announcer announcer = new Announcer(5000, announcerEndPoint, agentKey);
-        Collector collector = new Collector(collectorTimeInt);
-        Digester digester = new Digester(digesterTimeInt, digesterEndpoint, agentKey);
+        Announcer announcer = new Announcer(announcerTime, announcerEndPoint, key);
+        Collector collector = new Collector(collectorTime);
+        Digester digester = new Digester(digesterTime, digesterEndPoint, key);
         announcer.start();
         collector.start();
         digester.start();

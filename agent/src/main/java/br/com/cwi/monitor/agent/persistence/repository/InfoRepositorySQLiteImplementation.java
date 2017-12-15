@@ -33,7 +33,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
             pstmt.setLong(1, info.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -60,7 +60,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
                 Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -84,7 +84,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
                 infos.add(info);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return infos;
     }
@@ -98,7 +98,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
             ResultSet rs = stmt.executeQuery(sql);
             total = rs.getInt("total");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return total;
     }
@@ -109,7 +109,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
                 Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -127,7 +127,7 @@ public class InfoRepositorySQLiteImplementation implements InfoRepository {
                 Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

@@ -26,7 +26,7 @@ public class HttpHandlerApacheImplementation implements HttpHandler{
             HttpResponse response = httpClient.execute(request);
             responseCode = response.getStatusLine().getStatusCode();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally {
             httpClient.getConnectionManager().shutdown();
         }
@@ -44,7 +44,7 @@ public class HttpHandlerApacheImplementation implements HttpHandler{
             HttpResponse response = client.execute(post);
             return response.getStatusLine().getStatusCode();         
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return responseCode;
     }

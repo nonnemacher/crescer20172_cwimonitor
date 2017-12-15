@@ -24,14 +24,15 @@ public class MachineInfoOshiImplementation implements MachineInfo {
     public double getMemory() {
         double totalMemory = systemInfo.getHardware().getMemory().getTotal() / 1024 / 1024;
         double availableMemory = systemInfo.getHardware().getMemory().getAvailable() / 1024 / 1024;
-        double memoryPercentageUsed = (availableMemory / totalMemory) * 100;
+        double inUseMemory = totalMemory - availableMemory;
+        double memoryPercentageUsed = (inUseMemory / totalMemory) * 100;
 
         return memoryPercentageUsed;
     }
 
     @Override
     public double getTotalMemory() {
-        return systemInfo.getHardware().getMemory().getTotal() / 1024 / 1024 / 1000;
+        return (double)systemInfo.getHardware().getMemory().getTotal() / 1024 / 1024 / 1024;
     }
 
     @Override

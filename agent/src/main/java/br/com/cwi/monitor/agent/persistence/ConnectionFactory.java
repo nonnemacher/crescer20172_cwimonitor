@@ -11,7 +11,7 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
     
-    private static final String connectionString = "jdbc:sqlite:test.db";
+    private static final String connectionString = "jdbc:sqlite:database.db";
     
     public static Connection getConnection() {
         final StopWatch stopWatch = new StopWatch();
@@ -21,11 +21,10 @@ public class ConnectionFactory {
             conn = DriverManager.getConnection(connectionString);
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
                
         }
         stopWatch.stop();
-        System.out.println("Tempo para abrir connection " + stopWatch.getTotalTimeMillis());
         return conn;
     }
 }
