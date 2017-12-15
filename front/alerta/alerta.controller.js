@@ -25,7 +25,7 @@ angular.module('app').controller('AlertaController', function ($scope, alertaSer
 
     }
 
-    $scope.excluir=function(alerta){
+    $scope.excluir = function (alerta) {
         swal({
             title: `Você deseja deletar ${alerta.name}?`,
             text: "Esse alerta será deletado permanentemente!",
@@ -38,15 +38,11 @@ angular.module('app').controller('AlertaController', function ($scope, alertaSer
             function () {
                 alertaService.deletar(alerta.id).then(function () {
                     swal("Deletado!", `${alerta.name} foi deletado`, "success")
-                    listar(0,5)
+                    listar(0, 5)
                 }, function (response) {
                     console.log(response)
                     swal("Falha na solicitação!", response.data.message, "error")
                 })
-
             });
-
     }
-
-
 });

@@ -78,9 +78,7 @@ public class MachineRegisterController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-
         machineRegisterService.delete(id);
-        
     }
 
     @GetMapping("/group/{id}")

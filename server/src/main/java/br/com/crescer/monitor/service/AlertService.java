@@ -27,27 +27,25 @@ public class AlertService {
 
     @Autowired
     private MachineMonitoringGroupRepository groupRepository;
-    
+
     @Autowired
     private MachineRegisterRepository machineRepository;
 
     public void save(AlertDto dto) {
         Alert group = dto.converterGroupAlert(dto);
         if (dto.isGrupo()) {
-            
-            group.setGroup(groupRepository.findOne(dto.getAgenteOuGrupo()));            
-                        
+            group.setGroup(groupRepository.findOne(dto.getAgenteOuGrupo()));
         } else {
-            group.setMachine(machineRepository.findOne(dto.getAgenteOuGrupo()));          
-         
+            group.setMachine(machineRepository.findOne(dto.getAgenteOuGrupo()));
         }
-        groupAlertRepository.save(group);        
+        groupAlertRepository.save(group);
     }
     
-   public Page<Alert> allAlert(Pageable pgbl) {
-       
-        return groupAlertRepository.findAll(pgbl);
-   }
-   
+    public void delete(Long id) {
+        groupAlertRepository.delete(id);
+    }
 
+    public Page<Alert> allAlert(Pageable pgbl) {
+        return groupAlertRepository.findAll(pgbl);
+    }
 }

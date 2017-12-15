@@ -23,7 +23,6 @@ angular.module('app').factory('alertaService', function ($http) {
         listarGrupos: listarGrupos,
         listarAgentes: listarAgentes,
         deletar: deletar
-
     };
 
 })

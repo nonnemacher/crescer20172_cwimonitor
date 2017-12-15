@@ -21,7 +21,7 @@ public class AverageService {
     @Autowired
     private final MachineRegisterRepository machineRegisterRepository;
     
-    @Scheduled(fixedRate=30000, initialDelay = 5000)
+    //@Scheduled(fixedRate=30000, initialDelay = 5000)
     public void work() {
         System.out.println("Enviando o email.");
         
