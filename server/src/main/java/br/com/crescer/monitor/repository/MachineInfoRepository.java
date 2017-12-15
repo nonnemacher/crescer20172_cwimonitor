@@ -4,12 +4,12 @@ import br.com.crescer.monitor.dto.Register;
 import br.com.crescer.monitor.entity.MachineInfo;
 import java.time.LocalDateTime;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 /**
- *
  * @author Leonardo Bork
  */
 public interface MachineInfoRepository extends CrudRepository<MachineInfo, Long>{
@@ -30,6 +30,6 @@ public interface MachineInfoRepository extends CrudRepository<MachineInfo, Long>
             + "order by m.execTime")
     List<Register> loadMachineInfoByPeriodAndId(@Param("idParam") Long idParam, @Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime stopDate);
    
-    
-    
+    @Transactional
+    List<MachineInfo> removeByMachineRegisterId(Long id);   
 }

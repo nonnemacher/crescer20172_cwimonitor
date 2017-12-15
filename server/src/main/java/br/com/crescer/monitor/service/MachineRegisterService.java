@@ -4,6 +4,7 @@ import br.com.crescer.monitor.dto.MachineRegisterDto;
 import br.com.crescer.monitor.entity.MachineMonitoringGroup;
 import br.com.crescer.monitor.entity.MachineRegister;
 import br.com.crescer.monitor.entity.MachineTag;
+import br.com.crescer.monitor.repository.MachineInfoRepository;
 import br.com.crescer.monitor.repository.MachineMonitoringGroupRepository;
 import br.com.crescer.monitor.repository.MachineRegisterRepository;
 import br.com.crescer.monitor.repository.MachineTagRepository;
@@ -38,6 +39,9 @@ public class MachineRegisterService {
     @Autowired
     private MachineMonitoringGroupRepository groupRepository;
 
+    @Autowired
+    MachineInfoRepository infoRepositori;
+
     public MachineRegister findById(Long id) {
         return machineRegisterRepository.findOne(id);
     }
@@ -54,12 +58,12 @@ public class MachineRegisterService {
 
     public void saveMachineRegister(MachineRegister machineRegister) {
         machineRegisterRepository.save(machineRegister);
-    }  
+    }
 
     public MachineRegister findByGeneratedKey(String generatedKey) {
         return machineRegisterRepository.findByGeneratedKey(generatedKey);
     }
-      
+
     public Page<MachineRegister> findByGroups(Long id, Pageable pgbl) {
 
         MachineMonitoringGroup group = groupRepository.findOne(id);
@@ -100,7 +104,6 @@ public class MachineRegisterService {
     }
 
     public Page<MachineRegister> findMachineWithoutGroup(Long id, Pageable pgbl) {
-
         MachineMonitoringGroup group = groupRepository.findOne(id);
 
         List<Long> ids = machineRegisterRepository.findByGroups(group).stream().map(MachineRegister::getId).collect(Collectors.toList());
@@ -116,6 +119,7 @@ public class MachineRegisterService {
     }
 
     public void delete(Long id) {
+        infoRepositori.removeByMachineRegisterId(id);
         machineRegisterRepository.delete(id);
     }
 }
