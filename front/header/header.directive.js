@@ -25,6 +25,7 @@ angular.module('app')
 
         function atualizarUsuario() {
           $scope.usuario = authService.getUsuario();
+          $scope.logado=authService.isAutenticado();
         }
       }
     }

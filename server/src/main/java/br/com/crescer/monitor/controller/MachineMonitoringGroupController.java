@@ -46,7 +46,7 @@ public class MachineMonitoringGroupController {
     
     @PostMapping("/file")
     public void upload(@RequestParam("file") MultipartFile file) throws IOException {
-        File foto = new File("C:\\DEV\\willian.velhos\\tcc\\autenticacao\\img\\" + file.getOriginalFilename());
+        File foto = new File("C:\\DEV\\crescer20172_cwimonitor\\front\\img\\" + file.getOriginalFilename());
 
         foto.createNewFile();
         FileOutputStream fos = new FileOutputStream(foto);

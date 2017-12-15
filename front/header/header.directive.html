@@ -1,31 +1,29 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/#!/agent">
-    <img src="https://www.cwi.com.br/Content/Site/img/logo_cwisoftware.png" width="130" height="40" class="d-inline-block align-top" alt="">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-      
-      <li class="nav-item">
-        <a class="nav-link" href="/#!/grupo">Grupos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/#!/agente">Agentes</a>
-
-      </li>
-      <li class="nav-item">
-
-        <a class="nav-link" href="/#!/alerta">Alerta</a>
-      </li>
-
-    </ul>
-
-    <button class="btn btn-outline-success my-2 my-sm-0" ng-click="logout()">Logout</button>
-
-  </div>
-</nav>
+    <a class="navbar-brand" href="">CWIMonitor</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+  
+        
+        <li class="nav-item">
+          <a class="nav-link" ng-if="logado" href="/#!/grupo">Grupos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" ng-if="logado" href="/#!/agente">Agentes</a>
+  
+        </li>
+        <li class="nav-item">
+  
+          <a class="nav-link" ng-if="logado" href="/#!/alerta">Alerta</a>
+        </li>
+  
+      </ul>
+  
+      <a class="nav-link"  ng-if="logado" ng-click="logout()"> <img src="../imgCard/logout.png" width="25" alt=""></a>
+  
+    </div>
+  </nav>
