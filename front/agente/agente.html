@@ -1,5 +1,7 @@
 <div class="container">
-
+    <br>
+    <center><h1>Agentes</h1></center>
+    <br>
     <form>
         <div class="form-group">
             <label class="col-form-label" for="formGroupExampleInput">Pesquisar</label>
@@ -19,12 +21,12 @@
                 <div class="card-header" ng-bind="agente.machineName || agente.machineNickname"></div>
 
                 <div class="card-body">
-                    <p class="card-text" id="{{agente.machineNickname}}">{{agente.generatedKey}}
-                     <button class="btn btn-default" data-clipboard-target="#{{agente.machineNickname}}">
+                    <p class="card-text" id="{{agente.generatedKey}}">Key: {{agente.generatedKey}}
+                     <button class="btn btn-default" data-clipboard-target="#{{agente.generatedKey}}">
                         <img src="../Clipboard.svg" width="20"alt="Copy to clipboard">
                     </button></p>
-                    <p class="card-text">Apelido:{{agente.machineNickname}}</p>
-                    <p class="card-text">Coloborador:{{agente.collaborator.name}}</p>
+                    <p class="card-text">Apelido: {{agente.machineNickname}}</p>
+                    <p class="card-text">Colaborador: {{agente.collaborator.name}}</p>
 
                 </div>
                 <div class="card-footer">
