@@ -69,8 +69,8 @@ public class MachineMonitoringGroup implements Serializable {
         this.machines.add(machine);
     }
      
-     public void removeMachineRegister(MachineRegister machine){
-        this.machines.remove(machine);
+     public void removeMachineRegister(Long machineId){
+        this.machines.remove(machineId);
     } 
 }
 

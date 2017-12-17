@@ -79,8 +79,5 @@ public class MachineMonitoringGroupController {
         groupService.addMachineRegister(group, machine);
     }
 
-    @GetMapping("/all")
-    public ResponseEntity allGroup() {
-        return ok(groupService.allGroup());
-    }
+    
 }

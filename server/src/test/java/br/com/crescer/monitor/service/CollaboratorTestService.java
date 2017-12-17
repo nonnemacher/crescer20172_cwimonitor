@@ -61,6 +61,15 @@ public class CollaboratorTestService extends ConfigurationTest {
         
         collaboratorRepository.delete(collaborator.getId());
     }
+    @Test(expected = BadRequestException.class)   
+    public void testSaveException() {           
+       
+        CollaboratorDto dto = DataGenerator.createCollaboratorDto();
+        
+        collaboratorService.save(dto);
+        collaboratorService.save(dto);
+        
+    }
     
     @Test
     public void testSave() {

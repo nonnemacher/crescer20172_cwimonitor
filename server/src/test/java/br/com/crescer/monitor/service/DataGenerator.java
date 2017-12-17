@@ -72,12 +72,30 @@ public class DataGenerator {
         MachineMonitoringGroupDto dto = new MachineMonitoringGroupDto();
 
         dto.setGroupIcon("imagem.jpg");
-        dto.setDescription("Servidore Web"); 
+        dto.setDescription("Servidore Web");
         return dto;
     }
-    
-    public static MachineMonitoringGroup createMachineMonitoringGroup(List<MachineRegister> machines){
+   
+
+    public static MachineMonitoringGroup createMachineMonitoringGroup(List<MachineRegister> machines) {
         return MachineMonitoringGroup.builder().description("groupasso").groupIcon("icon").machines(machines).build();
+    }
+
+    public static MachineRegister createMachineRegister() {
+
+        List<MachineRegister> machineRegisters = new ArrayList<>();
+
+        return MachineRegister.builder().collaborator(createCollaborator())
+                .machineName("Maqq")
+                .machineNickname("Server")
+                .groups(new ArrayList<MachineMonitoringGroup>())
+                .alerts(new ArrayList<Alert>())
+                .build();
+    }
+
+    public static MachineRegisterDto createMachineRegisterDto() {
+
+        return MachineRegisterDto.builder().machineNickname("Server").name("Maqq").tags(new ArrayList<String>()).build();
     }
 
     public static MachineRegister createMachineRegister(){

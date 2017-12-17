@@ -71,7 +71,7 @@ public class MachineMonitoringGroupService {
             throw new Exception("Não existe agente com esse id");
         }
 
-        group.removeMachineRegister(machine);
+        group.removeMachineRegister(machine.getId());
 
         groupRepository.save(group);
 
@@ -82,9 +82,6 @@ public class MachineMonitoringGroupService {
         return groupRepository.findAll(pgbl);
     }
 
-    public List<MachineMonitoringGroup> allGroup() {
-
-        return (List<MachineMonitoringGroup>) groupRepository.findAll();
-    }
+    
 
 }

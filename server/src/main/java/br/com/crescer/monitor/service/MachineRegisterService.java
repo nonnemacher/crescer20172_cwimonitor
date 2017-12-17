@@ -113,7 +113,7 @@ public class MachineRegisterService {
         return machineRegisterRepository.findByIdNotIn(ids, pgbl);
     }
 
-    public String generateKey() {
+    public static String generateKey() {
         String key = UUID.randomUUID().toString();
         return key;
     }
