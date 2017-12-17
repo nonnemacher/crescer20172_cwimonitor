@@ -16,7 +16,7 @@ angular.module('app').controller('AgenteController', function ($scope, agenteSer
 
     }
 
-
+    new Clipboard('.btn');
     $scope.pesquisar = function (id) {
         agenteService.pesquisarPorId(id)
             .then(function (response) {
