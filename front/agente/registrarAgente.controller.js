@@ -13,7 +13,7 @@ angular.module('app').controller('RegistraAgenteController', function ($scope,$l
         agente.tags.forEach(element => {
             tags.push(element.text);
         });
-        console.log(tags)
+        
         agente.tags=tags;
         agenteService.cadastrar(agente)
             .then(function (response) {

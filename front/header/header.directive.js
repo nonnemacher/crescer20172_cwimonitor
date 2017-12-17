@@ -27,6 +27,8 @@ angular.module('app')
           $scope.usuario = authService.getUsuario();
           $scope.logado=authService.isAutenticado();
         }
+
+        
       }
     }
 

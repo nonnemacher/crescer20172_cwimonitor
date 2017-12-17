@@ -97,10 +97,20 @@ angular.module('app').config(function ($routeProvider) {
       templateUrl: 'login/login.html'
     })
 
-    // pública
+    
     .when('/dashboard/:idAgente?', {
       controller: 'DashBoardController',
       templateUrl: 'dashboard/dashboard.html',
+      resolve: {
+
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
+    })
+    .when('/dashboard/grupo/:idAgente?', {
+      controller: 'DashBoardGrupoController',
+      templateUrl: 'dashboard/grupo/dashboardGrupo.html',
       resolve: {
 
         autenticado: function (authService) {

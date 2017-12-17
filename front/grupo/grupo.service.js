@@ -10,6 +10,10 @@ angular.module('app').factory('grupoService', function ($http) {
         return $http.get(urlBase + '?page=' + page + '&size=' + size)
     }
 
+    function listarTodos(page, size) {
+        return $http.get(urlBase + 'all')
+    }
+
     function remover(id) {
         return $http.delete(urlBase + id)
     }
@@ -35,7 +39,8 @@ angular.module('app').factory('grupoService', function ($http) {
 
     return {
         cadastrar: cadastrar,
-        listar: listar,        
+        listar: listar,
+        listarTodos: listarTodos,
         addFoto: addFoto,
         remover: remover,
         adicionarAgente: adicionarAgente,

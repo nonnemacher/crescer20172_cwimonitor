@@ -27,7 +27,7 @@
 
                     <td>{{alerta.name}}</td>
                     <td>{{alerta.metric}}</td>
-                    <td>{{alerta.machine.machineNickname}}{{alerta.group}}</td>
+                    <td ng-bind="alerta.machine.machineNickname || alerta.group.description"></td>
                     
                     <td>
                         <a href="">

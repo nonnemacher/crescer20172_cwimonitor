@@ -1,4 +1,4 @@
-angular.module('app').controller('DashBoardController', function ($scope, authService, dadosService, $routeParams) {
+angular.module('app').controller('DashBoardGrupoController', function ($scope, authService, dadosService, $routeParams) {
 
   $scope.isAgente = !!$routeParams.idAgente;
 

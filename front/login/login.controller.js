@@ -5,7 +5,7 @@ angular.module('app').controller('LoginController', function ($scope, authServic
     authService.login(usuario)
       .then(
         function (response) {
-          
+         
 
         },
         function (response) {

@@ -19,6 +19,7 @@
 
                     <th scope="col">Nome</th>
                     <th scope="col">Icone</th>
+                    <th scope="col">Gráfico</th>
                     <th scope="col">Agentes</th>
                     <th scope="col">Adicionar Agente</th>
                     <th scope="col">Editar</th>
@@ -32,6 +33,10 @@
                     <td>
                         <img ng-src="../img/{{grupo.groupIcon}}" class="rounded-circle" height="35" width="35">
                     </td>
+                    <td>
+                        <a class="btn btn-primary"  href="#!/dashboard/grupo/{{grupo.id}}">Gráfico</a>
+                    </td>
+                    
                     <td>
                         <a href="#!/listarAgentes/{{grupo.id}}">
                             <button type="button" class="btn btn-primary btnlistar">Agentes</button>

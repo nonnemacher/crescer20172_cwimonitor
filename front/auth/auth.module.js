@@ -78,6 +78,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
     // Redireciona se tiver uma url configurada
     if (urlLogout) {
+      
       $location.path(urlLogout);
     }
   };
