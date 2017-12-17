@@ -97,23 +97,6 @@ public class DataGenerator {
 
         return MachineRegisterDto.builder().machineNickname("Server").name("Maqq").tags(new ArrayList<String>()).build();
     }
-
-    public static MachineRegister createMachineRegister(){
-        
-        List<MachineRegister> machineRegisters = new ArrayList<>();
-        
-        return MachineRegister.builder().collaborator(createCollaborator()).
-                machineName("Maqq").
-                    machineNickname("Server").
-                        groups(new ArrayList<MachineMonitoringGroup>()).
-                            alerts(new ArrayList<Alert>()).build();
-    }
-    
-    public static MachineRegisterDto createMachineRegisterDto(){
-        ArrayList<String> tags = new ArrayList<String>();
-        tags.add("Tag");
-        return MachineRegisterDto.builder().machineNickname("Server").name("Maqq").tags(tags).build();
-    }
     
     public static MachineTag createMachineTag(){
         return MachineTag.builder().machines(new ArrayList<>()).description("Tag").build();
