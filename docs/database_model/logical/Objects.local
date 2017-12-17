@@ -1,4 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<oracle.dbtools.crest.model.design.logical.LogicalDesign>
-   <object objectType="Entity" objectID="1ED1CE5D-7B2E-E0AC-397C-C8F5F07F491B" name="MACHINE_INFORMATION" seqName="seg_0"/>
-</oracle.dbtools.crest.model.design.logical.LogicalDesign>
