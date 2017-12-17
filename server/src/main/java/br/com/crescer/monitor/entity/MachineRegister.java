@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
@@ -60,20 +61,20 @@ public class MachineRegister implements Serializable {
     @Column(nullable = false, length = 255)
     private String machineNickname;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_COLLABORATOR")
     private Collaborator collaborator;
     
     @JsonIgnore
-    @OneToMany(mappedBy = "machine")
+    @OneToMany(mappedBy = "machine", fetch = FetchType.EAGER)
     private List<Alert> alerts;
     
     @JsonIgnore
-    @ManyToMany(mappedBy = "machines")
+    @ManyToMany(mappedBy = "machines", fetch = FetchType.EAGER)
     private List<MachineTag> tags;
     
     @JsonIgnore
-    @ManyToMany(mappedBy = "machines")
+    @ManyToMany(mappedBy = "machines", fetch = FetchType.EAGER)
     private List<MachineMonitoringGroup> groups;
 
 }

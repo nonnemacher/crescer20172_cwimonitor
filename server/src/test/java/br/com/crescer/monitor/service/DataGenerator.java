@@ -7,8 +7,16 @@ package br.com.crescer.monitor.service;
 
 import br.com.crescer.monitor.dto.CollaboratorDto;
 import br.com.crescer.monitor.dto.MachineMonitoringGroupDto;
+import br.com.crescer.monitor.dto.MachineRegisterDto;
+import br.com.crescer.monitor.entity.Alert;
 import br.com.crescer.monitor.entity.Collaborator;
+import br.com.crescer.monitor.entity.MachineMonitoringGroup;
+import br.com.crescer.monitor.entity.MachineRegister;
+import br.com.crescer.monitor.entity.MachineTag;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import org.aspectj.weaver.Advice;
 
 /**
  *
@@ -67,5 +75,29 @@ public class DataGenerator {
         dto.setDescription("Servidore Web"); 
         return dto;
     }
+    
+    public static MachineMonitoringGroup createMachineMonitoringGroup(List<MachineRegister> machines){
+        return MachineMonitoringGroup.builder().description("groupasso").groupIcon("icon").machines(machines).build();
+    }
 
+    public static MachineRegister createMachineRegister(){
+        
+        List<MachineRegister> machineRegisters = new ArrayList<>();
+        
+        return MachineRegister.builder().collaborator(createCollaborator()).
+                machineName("Maqq").
+                    machineNickname("Server").
+                        groups(new ArrayList<MachineMonitoringGroup>()).
+                            alerts(new ArrayList<Alert>()).build();
+    }
+    
+    public static MachineRegisterDto createMachineRegisterDto(){
+        ArrayList<String> tags = new ArrayList<String>();
+        tags.add("Tag");
+        return MachineRegisterDto.builder().machineNickname("Server").name("Maqq").tags(tags).build();
+    }
+    
+    public static MachineTag createMachineTag(){
+        return MachineTag.builder().machines(new ArrayList<>()).description("Tag").build();
+    }
 }

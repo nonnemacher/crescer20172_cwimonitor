@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
@@ -56,7 +57,7 @@ public class MachineMonitoringGroup implements Serializable {
     @Column(nullable = false, length = 255)
     private String description;
    
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "MACHINE_MONITORING_REGISTER",
             joinColumns = {
                 @JoinColumn(name = "FK_MONITORING")},

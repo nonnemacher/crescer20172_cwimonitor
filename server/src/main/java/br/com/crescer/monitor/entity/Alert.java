@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
@@ -69,11 +70,11 @@ public class Alert implements Serializable {
     @Column(name = "EMAIL", nullable = false, length = 120)
     private String email;
 
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_GROUP_REGISTER")
     private MachineMonitoringGroup group;
 
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_MACHINE_REGISTER")
     private MachineRegister machine;
 
