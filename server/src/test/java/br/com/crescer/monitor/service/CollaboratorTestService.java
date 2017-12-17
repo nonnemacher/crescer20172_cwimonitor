@@ -9,6 +9,7 @@ import br.com.crescer.configurationTest.ConfigurationTest;
 import br.com.crescer.monitor.dto.CollaboratorDto;
 import br.com.crescer.monitor.entity.Collaborator;
 import br.com.crescer.monitor.repository.CollaboratorRepository;
+import br.com.crescer.monitor.utility.BadRequestException;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -48,6 +49,15 @@ public class CollaboratorTestService extends ConfigurationTest {
         assertEquals(collaborator.getPass(), result.getPass());
         
         collaboratorRepository.delete(collaborator.getId());
+    }
+    @Test(expected = BadRequestException.class)   
+    public void testSaveException() {           
+       
+        CollaboratorDto dto = DataGenerator.createCollaboratorDto();
+        
+        collaboratorService.save(dto);
+        collaboratorService.save(dto);
+        
     }
     
     @Test

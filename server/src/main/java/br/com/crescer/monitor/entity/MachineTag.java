@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
@@ -50,7 +51,7 @@ public class MachineTag implements Serializable {
     @Column(name = "DESCRIPTION", unique = true, nullable = false)
     private String description;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "MACHINE_TAG_REGISTER",
             joinColumns = {
                 @JoinColumn(name = "FK_TAG")},
