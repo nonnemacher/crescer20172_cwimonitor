@@ -219,10 +219,19 @@ angular.module('app').controller('DashBoardController', function ($scope, authSe
       promise(promiseDados, 1)
     }
 
-
+    atualizarDadosMaquina();
     realTime();
 
     var real = setInterval(realTime, 2000)
+
+    function atualizarDadosMaquina(){
+      dadosService.dadosReal($routeParams.idAgente).then(
+        function(response) {
+          $scope.memoriaT= Math.round((response.data[0].totalMemory * 100) / 100);
+          $scope.nucleosT =  Math.floor(response.data[0].numberOfCores);
+        }
+      )
+    }
 
     $scope.real = function () {
       realTime();
@@ -295,9 +304,6 @@ angular.module('app').controller('DashBoardController', function ($scope, authSe
         var dataResponseDisco = [];
         var dataResponseMemoria = [];
         // console.log(response.data);
-
-        $scope.memoriaT= Math.round((response.data[0].totalMemory * 100) / 100);
-        $scope.nucleosT =  Math.floor(response.data[0].numberOfCores);
 
         dataResponseDisco.push(!!isReal ?  { label: 'Usado', value: response.data[0].occupiedDiskAvg } :{ label: 'Usado', value: response.data[0].id.occupiedDiskAvg });
         dataResponseDisco.push(!!isReal ?  { label: 'Livre', value: response.data[0].freeDiskAvg } :{ label: 'Livre', value: response.data[0].id.freeDiskAvg });
