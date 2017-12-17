@@ -19,7 +19,9 @@
                 <div class="card-header" ng-bind="agente.machineName || agente.machineNickname"></div>
 
                 <div class="card-body">
-                    <h6 class="card-text">Key:{{agente.generatedKey}}</h6>
+                    <p class="card-text">{{agente.generatedKey}}<button class="btn btn-default" data-clipboard-target="#{{agente.machineNickname}}">
+                        <img src="../Clipboard.svg" width="20"alt="Copy to clipboard">
+                    </button></p>
                     <p class="card-text">Apelido:{{agente.machineNickname}}</p>
                     <p class="card-text">Coloborador:{{agente.collaborator.name}}</p>
 

@@ -214,38 +214,46 @@ angular.module('app').controller('DashBoardGrupoController', function ($scope, a
         "showborder": "0"
       }
     }
-    function realTime() {
-      let promiseDados = dadosService.dadosReal($routeParams.idAgente);
-      promise(promiseDados, 1)
+
+    function last15min() {
+      let promiseDados = dadosService.dados15Minutos($routeParams.idAgente);
+      promise(promiseDados, 0)
     }
 
+    last15min()
 
-    realTime();
+    // function realTime() {
+    //   let promiseDados = dadosService.dadosReal($routeParams.idAgente);
+    //   promise(promiseDados, 1)
+    // }
 
-    var real = setInterval(realTime, 2000)
 
-    $scope.real = function () {
-      realTime();
-      real = setInterval(realTime, 2000)
-      $scope.memoria.chart = atualizarChartLineMemoria('Real', 'Segundos');
-      $scope.cpu.chart = atualizarChartLineCpu('Real', 'Segundos');
-      $scope.disco.chart = atualizarChartPie('Real');
-      btnDashBoard(7);
-    }
+    // realTime();
 
-    function btnDashBoard(id){
-      document.getElementById(1).className='btn btn-default toggle'
-      document.getElementById(2).className='btn btn-default toggle'
-      document.getElementById(3).className='btn btn-default toggle'
-      document.getElementById(4).className='btn btn-default toggle'
-      document.getElementById(5).className='btn btn-default toggle'
-      document.getElementById(6).className='btn btn-default toggle'     
-      document.getElementById(7).className='btn btn-default toggle'
-      document.getElementById(id).className='btn btn-dark toggle';
+    // var real = setInterval(realTime, 2000)
+
+    // $scope.real = function () {
+    //   realTime();
+    //   real = setInterval(realTime, 2000)
+    //   $scope.memoria.chart = atualizarChartLineMemoria('Real', 'Segundos');
+    //   $scope.cpu.chart = atualizarChartLineCpu('Real', 'Segundos');
+    //   $scope.disco.chart = atualizarChartPie('Real');
+    //   btnDashBoard(7);
+    // }
+
+    function btnDashBoard(id) {
+      document.getElementById(1).className = 'btn btn-default toggle'
+      document.getElementById(2).className = 'btn btn-default toggle'
+      document.getElementById(3).className = 'btn btn-default toggle'
+      document.getElementById(4).className = 'btn btn-default toggle'
+      document.getElementById(5).className = 'btn btn-default toggle'
+      document.getElementById(6).className = 'btn btn-default toggle'
+      // document.getElementById(7).className='btn btn-default toggle'
+      document.getElementById(id).className = 'btn btn-dark toggle';
     }
 
     $scope.hora = function (horario) {
-      clearInterval(real);
+      //clearInterval(real);
 
       btnDashBoard(horario);
 
@@ -296,21 +304,21 @@ angular.module('app').controller('DashBoardGrupoController', function ($scope, a
         var dataResponseMemoria = [];
         console.log(response.data);
 
-        dataResponseDisco.push(!!isReal ?  { label: 'Usado', value: response.data[0].occupiedDiskAvg } :{ label: 'Usado', value: response.data[0].id.occupiedDiskAvg });
-        dataResponseDisco.push(!!isReal ?  { label: 'Livre', value: response.data[0].freeDiskAvg } :{ label: 'Livre', value: response.data[0].id.freeDiskAvg });
+        dataResponseDisco.push(!!isReal ? { label: 'Usado', value: response.data[0].occupiedDiskAvg } : { label: 'Usado', value: response.data[0].id.occupiedDiskAvg });
+        dataResponseDisco.push(!!isReal ? { label: 'Livre', value: response.data[0].freeDiskAvg } : { label: 'Livre', value: response.data[0].id.freeDiskAvg });
         response.data.forEach(element => {
-         
-          dataResponseCpu.push(!!isReal ?  {  label: '', value: Math.floor(element.cpuAvg)}:{  label: element.id.minu[3] + ':' + element.id.minu[4], value: Math.floor((element.id.cpuAvg)) });
-          dataResponseMemoria.push(!!isReal ?  {  label: '', value:Math.floor( element.ramAvg)}:{  label: element.id.minu[3] + ':' + element.id.minu[4], value: Math.floor(element.id.ramAvg)});
-          
+
+          dataResponseCpu.push(!!isReal ? { label: '', value: Math.floor(element.cpuAvg) } : { label: element.id.minu[3] + ':' + element.id.minu[4], value: Math.floor((element.id.cpuAvg)) });
+          dataResponseMemoria.push(!!isReal ? { label: '', value: Math.floor(element.ramAvg) } : { label: element.id.minu[3] + ':' + element.id.minu[4], value: Math.floor(element.id.ramAvg) });
+
         });
-       // console.log(dataResponseMemoria)
+        // console.log(dataResponseMemoria)
         $scope.cpu.data = dataResponseCpu;
         $scope.memoria.data = dataResponseMemoria;
         $scope.disco.data = dataResponseDisco;
       });
 
-//!!isReal ? '' : element.id.minu[3] + ':' + element.id.minu[4]
+
     }
 
   }

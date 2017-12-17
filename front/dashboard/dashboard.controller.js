@@ -45,7 +45,7 @@ angular.module('app').controller('DashBoardController', function ($scope, authSe
 
     function atualizarChartLineCpu(Tempo, EixoX) {
       return chart = {
-        "caption": "Cpu",
+        "caption": "CPU",
         "yaxismaxvalue": "100",
         "subCaption": Tempo,
         "showvalues": "1",
@@ -178,7 +178,7 @@ angular.module('app').controller('DashBoardController', function ($scope, authSe
 
     $scope.cpu = {
       "chart": {
-        "caption": "Cpu",
+        "caption": "CPU",
         "yaxismaxvalue": "100",
         "subCaption": "Tempo Real",
         "showvalues": "1",
