@@ -45,6 +45,11 @@ public class MachineRegisterService {
     public MachineRegister findById(Long id) {
         return machineRegisterRepository.findOne(id);
     }
+    
+    public Page<MachineRegister> findByNameAndNickname(String request,Pageable pgbl){
+        
+        return machineRegisterRepository.findByMachineNameContainingIgnoreCaseOrMachineNicknameContainingIgnoreCase(request, request, pgbl);
+    }
 
     public Page<MachineRegister> findByCollaborator(Pageable pgbl) {
 

@@ -7,6 +7,7 @@ package br.com.crescer.monitor.service;
 
 import br.com.crescer.monitor.dto.AlertDto;
 import br.com.crescer.monitor.entity.Alert;
+import br.com.crescer.monitor.repository.AlertRepository;
 import br.com.crescer.monitor.repository.GroupAlertRepository;
 import br.com.crescer.monitor.repository.MachineMonitoringGroupRepository;
 import br.com.crescer.monitor.repository.MachineRegisterRepository;
@@ -23,7 +24,7 @@ import org.springframework.data.domain.Pageable;
 public class AlertService {
 
     @Autowired
-    private GroupAlertRepository groupAlertRepository;
+    private AlertRepository alertRepository;
 
     @Autowired
     private MachineMonitoringGroupRepository groupRepository;
@@ -38,14 +39,21 @@ public class AlertService {
         } else {
             group.setMachine(machineRepository.findOne(dto.getAgenteOuGrupo()));
         }
-        groupAlertRepository.save(group);
+        alertRepository.save(group);
     }
     
     public void delete(Long id) {
-        groupAlertRepository.delete(id);
+        alertRepository.delete(id);
     }
 
-    public Page<Alert> allAlert(Pageable pgbl) {
-        return groupAlertRepository.findAll(pgbl);
+    public Page<Alert> findByName(String name,Pageable pgbl){
+        
+        return alertRepository.findByNameContainingIgnoreCase(name,pgbl);
     }
+    
+    
+   public Page<Alert> allAlert(Pageable pgbl) {
+       
+        return alertRepository.findAll(pgbl);
+   }
 }

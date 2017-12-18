@@ -52,4 +52,13 @@ public class AlertController {
         alertService.delete(id);
         return ResponseEntity.ok(null);
     }
+    
+    @GetMapping("/pesquisar/{request}")
+    public Page<Alert> findByName(
+            @PathVariable String request,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "10") int size) {
+
+        return alertService.findByName(request, new PageRequest(page, size, new Sort("id")));
+    }
 }

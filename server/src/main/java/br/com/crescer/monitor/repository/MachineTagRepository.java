@@ -6,6 +6,7 @@
 package br.com.crescer.monitor.repository;
 
 import br.com.crescer.monitor.entity.MachineTag;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
@@ -17,6 +18,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface MachineTagRepository extends CrudRepository<MachineTag, Long> {
 
     MachineTag findByDescription(String description);
-    Page<MachineTag> findByDescriptionContainingIgnoreCase(String description, Pageable pageable); 
+    List<MachineTag> findByDescriptionContainingIgnoreCase(String description); 
     
 }

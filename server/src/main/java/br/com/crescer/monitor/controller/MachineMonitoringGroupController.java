@@ -37,36 +37,39 @@ public class MachineMonitoringGroupController {
 
     @PostMapping
     public ResponseEntity salvar(@RequestBody MachineMonitoringGroupDto request) throws IOException {
+
         if (request == null) {
             return badRequest().body("Parâmetro null.");
         }
 
         return ok(groupService.save(request));
-    }
-    
-    @PostMapping("/file")
-    public void upload(@RequestParam("file") MultipartFile file) throws IOException {
-        File foto = new File("C:\\DEV\\crescer20172_cwimonitor\\front\\img\\" + file.getOriginalFilename());
 
-        foto.createNewFile();
-        FileOutputStream fos = new FileOutputStream(foto);
-        fos.write(file.getBytes());
-        fos.close();
     }
-       
     
+    @GetMapping("/pesquisar/{request}")
+    public Page<MachineMonitoringGroup> findByDescription(
+            @PathVariable String request,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "10") int size){
+        
+        return groupService.findByDescription(request, new PageRequest(page, size, new Sort("id")));
+    }
+
     @PutMapping("/removeMachineRegister")
     public void removeMachineRegister(@RequestParam Long group, @RequestParam Long machine) throws Exception {
+
         groupService.removeMachineRegister(group, machine);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
+
         groupService.delete(id);
+
     }
 
     @GetMapping
-    public Page<MachineMonitoringGroup> postagens(
+    public Page<MachineMonitoringGroup> allGroup(
             @RequestParam(required = false, defaultValue = "0") int page,
             @RequestParam(required = false, defaultValue = "10") int size
     ) {
@@ -76,8 +79,26 @@ public class MachineMonitoringGroupController {
 
     @PostMapping("/add")
     public void addMachineRegister(@RequestParam Long group, @RequestParam Long machine) throws Exception {
+
         groupService.addMachineRegister(group, machine);
     }
 
-    
+    @GetMapping("/all")
+    public ResponseEntity allGroup(){
+
+        return ok(groupService.allGroup());
+    }
+
+    @PostMapping("/file")
+    public void upload(@RequestParam("file") MultipartFile file) throws IOException {
+
+        File foto = new File("C:\\DEV\\willian.velhos\\tcc\\crescer20172_cwimonitor\\front\\img\\" + file.getOriginalFilename());
+
+        foto.createNewFile();
+        FileOutputStream fos = new FileOutputStream(foto);
+        fos.write(file.getBytes());
+        fos.close();
+
+    }
+
 }

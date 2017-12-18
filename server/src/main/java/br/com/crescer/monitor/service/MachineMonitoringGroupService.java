@@ -38,6 +38,12 @@ public class MachineMonitoringGroupService {
 
         return groupRepository.save(group);
     }
+    
+    public Page<MachineMonitoringGroup>findByDescription(String description,Pageable pgbl){
+        
+        return groupRepository.findByDescriptionContainingIgnoreCase(description, pgbl);
+        
+    }
 
     public void addMachineRegister(Long idGroup, Long idAgent) throws Exception {
 
@@ -80,6 +86,11 @@ public class MachineMonitoringGroupService {
     public Page<MachineMonitoringGroup> allGroup(Pageable pgbl) {
 
         return groupRepository.findAll(pgbl);
+    }
+    
+    public List<MachineMonitoringGroup> allGroup() {
+
+        return (List<MachineMonitoringGroup>) groupRepository.findAll();
     }
 
     

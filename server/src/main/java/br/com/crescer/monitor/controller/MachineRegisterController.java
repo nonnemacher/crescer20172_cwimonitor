@@ -48,6 +48,16 @@ public class MachineRegisterController {
 
         return machineRegisterService.findByCollaborator(new PageRequest(page, size, new Sort("id")));
     }
+    
+    @GetMapping("/pesquisar/{request}")
+    public Page<MachineRegister> getMachinesFindByNameAndNickName(
+            @PathVariable String request,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "10") int size
+    ) {
+
+        return machineRegisterService.findByNameAndNickname(request,new PageRequest(page, size, new Sort("id")));
+    }
 
     @GetMapping("/all")
     public ResponseEntity allMachine() {

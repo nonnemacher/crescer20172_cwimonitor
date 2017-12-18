@@ -5,9 +5,12 @@
  */
 package br.com.crescer.monitor.service;
 
+import br.com.crescer.monitor.dto.TagDto;
 import br.com.crescer.monitor.entity.MachineTag;
 import br.com.crescer.monitor.repository.MachineMonitoringGroupRepository;
 import br.com.crescer.monitor.repository.MachineTagRepository;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,10 +27,23 @@ public class MachineTagService {
     private MachineTagRepository tagRepository;
     
     
-    public Page<MachineTag> findByDescription(String descripition, Pageable page){
+    public List<TagDto> findByDescription(String descripition){
         
-        return tagRepository.findByDescriptionContainingIgnoreCase(descripition, page);
+        List<MachineTag> tags= tagRepository.findByDescriptionContainingIgnoreCase(descripition);
+        List<TagDto> tagsDto = new ArrayList<>();
+        for(int x=0; x <tags.size(); x++){
+            
+            tagsDto.add(converter(tags.get(x)));
+        }
         
+        return tagsDto;
+        
+    }
+    
+    public TagDto converter(MachineTag machineTag) {
+        return TagDto.builder()
+                .text(machineTag.getDescription())
+                .build();
     }
     
 }

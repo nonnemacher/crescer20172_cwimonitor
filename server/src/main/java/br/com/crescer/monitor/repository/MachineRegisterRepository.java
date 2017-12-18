@@ -23,5 +23,7 @@ public interface MachineRegisterRepository extends PagingAndSortingRepository<Ma
 
     List<MachineRegister> findByGroups(MachineMonitoringGroup group);
     
+    Page<MachineRegister> findByMachineNameContainingIgnoreCaseOrMachineNicknameContainingIgnoreCase(String name, String nickName, Pageable pageable);
+    
     Page<MachineRegister> findByCollaborator(Collaborator collaborator, Pageable pgbl);
 }

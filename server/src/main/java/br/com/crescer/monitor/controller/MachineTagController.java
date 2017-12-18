@@ -5,7 +5,9 @@
  */
 package br.com.crescer.monitor.controller;
 
+import br.com.crescer.monitor.dto.TagDto;
 import br.com.crescer.monitor.service.MachineTagService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +30,8 @@ public class MachineTagController {
     private MachineTagService tagService;
     
     @GetMapping("/{description}")
-    public ResponseEntity findById(@PathVariable String description,
-            @RequestParam(required = false, defaultValue = "0") int page,
-            @RequestParam(required = false, defaultValue = "10") int size) {
+    public  List<TagDto> findById(@PathVariable String description){
 
-        return ok( tagService.findByDescription(description,new PageRequest(page, size)));
+        return tagService.findByDescription(description);
     }
 }

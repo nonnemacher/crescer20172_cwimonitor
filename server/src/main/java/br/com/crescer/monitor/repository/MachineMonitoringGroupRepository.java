@@ -16,6 +16,6 @@ public interface MachineMonitoringGroupRepository extends PagingAndSortingReposi
 
     boolean existsByDescriptionIgnoreCase(String description);
     
-    
+    Page<MachineMonitoringGroup> findByDescriptionContainingIgnoreCase(String descricao, org.springframework.data.domain.Pageable page);
 
 }
