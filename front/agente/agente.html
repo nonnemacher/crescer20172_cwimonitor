@@ -5,7 +5,7 @@
     <form>
         <div class="form-group">
             <label class="col-form-label" for="formGroupExampleInput">Pesquisar</label>
-            <input type="text" class="form-control pes" id="formGroupExampleInput" placeholder="Pesquisar" name="search" ng-model="search">
+            <input type="text" class="form-control pes" ng-change="pesquisar(search)" id="formGroupExampleInput" placeholder="Pesquisar" name="search" ng-model="search">
         </div>
         <div class="form-group">
         </div>
@@ -21,7 +21,7 @@
                 <div class="card-header" ng-bind="agente.machineName || agente.machineNickname"></div>
 
                 <div class="card-body">
-                    <p class="card-text" id="key{{agente.id}}">Key: {{agente.generatedKey}}                    
+                    <p class="card-text" ><b>Key:</b> <i id="key{{agente.id}}"> {{agente.generatedKey}}</i>                     
                     <button class="btn" ngclipboard data-clipboard-target="#key{{agente.id}}">
                         <img src="../Clipboard.svg" width="20" alt="Copy to clipboard">
                     </button></p>
@@ -32,13 +32,21 @@
                 <div class="card-footer">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a class="btn btn-primary"  href="#!/dashboard/{{agente.id}}">Gráfico</a>
-                        <button class="btn btn-default ">Editar</button>
+                        
                         <button class="btn btn-default" ng-click="excluir(agente)">Excluir</button>
+                        
                     </div>
                 </div>
             </div>
 
         </div>
+    </div>
+    <div class="centralizar">
+        <nav aria-label="Page navigation ">
+            <ul class="pagination justify-content-center" uib-pagination ng-change="avancarPagina()" ng-model="nPagina" boundary-link-numbers="true"
+                items-per-page="take" total-items="paginas" max-size="5" rotate="false" num-pages="numPages" previous-text="Anterior"
+                next-text="Próximo" first-text="&laquo;" last-text="&raquo;"></ul>
+        </nav>
     </div>
 
 

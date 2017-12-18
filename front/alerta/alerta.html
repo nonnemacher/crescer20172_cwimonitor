@@ -5,7 +5,7 @@
     <form>
         <div class="form-group">
             <label class="col-form-label" for="formGroupExampleInput">Pesquisar</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Pesquisar" name="search" ng-model="search">
+            <input type="text" class="form-control" ng-change="pesquisar(search)" id="formGroupExampleInput" placeholder="Pesquisar" name="search" ng-model="search">
 
         </div>
     </form>
@@ -20,8 +20,8 @@
 
                     <th scope="col">Nome</th>
                     <th scope="col">Métrica</th>
-                     <th scope="col">Grupo/Agente</th> 
-                    <th scope="col">Editar</th>
+                    <th scope="col">Grupo/Agente</th> 
+                    
                     <th scope="col">Excluir</th>
                 </tr>
             </thead>
@@ -32,11 +32,7 @@
                     <td>{{alerta.metric}}</td>
                     <td ng-bind="alerta.machine.machineNickname || alerta.group.description"></td>
                     
-                    <td>
-                        <a href="">
-                            <button type="button" class="btn btn-primary btnEditar">Editar</button>
-                        </a>
-                    </td>
+                    
                     <td>
                         <button type="button" class="btn btn-danger btnExcluir" ng-click="excluir(alerta)" value="Deletar">Excluir</button>
                     </td>

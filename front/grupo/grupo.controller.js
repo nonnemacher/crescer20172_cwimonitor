@@ -25,7 +25,17 @@ angular.module('app').controller('GrupoController', function ($scope, grupoServi
 
     }
 
-    $scope.excluir = function(grupo){
+    $scope.pesquisar = function (pes) {
+        grupoService.pesquisar(pes)
+            .then(function (response) {
+                $scope.grupos = response.data.content;
+                $scope.paginas = response.data.totalElements;
+
+            })
+
+    }
+
+    $scope.excluir = function (grupo) {
         swal({
             title: `Você deseja deletar ${grupo.description}?`,
             text: "Esse grupo será deletado permanentemente!",
@@ -38,7 +48,7 @@ angular.module('app').controller('GrupoController', function ($scope, grupoServi
             function () {
                 grupoService.remover(grupo.id).then(function () {
                     swal("Deletado!", `${grupo.description} foi deletado`, "success")
-                    listar(0,5)
+                    listar(0, 5)
                 }, function (response) {
                     swal("Falha na solicitação!", response.data.message, "error")
                 })
@@ -47,7 +57,7 @@ angular.module('app').controller('GrupoController', function ($scope, grupoServi
 
     }
 
-    
+
 
 
 });

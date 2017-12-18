@@ -15,11 +15,20 @@ angular.module('app').controller('AlertaController', function ($scope, alertaSer
 
     }
 
+    $scope.pesquisar = function (pes) {
+        alertaService.pesquisar(pes)
+            .then(function (response) {
+                $scope.alertas = response.data.content;                
+                $scope.paginas = response.data.totalElements;
+
+            })
+
+    }
+
     function listar(page, size) {
         alertaService.listarGrupos(page, size)
             .then(function (response) {
-                $scope.alertas = response.data.content;
-                console.log($scope.alertas)
+                $scope.alertas = response.data.content;                
                 $scope.paginas = response.data.totalElements;
             })
 

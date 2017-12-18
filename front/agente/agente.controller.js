@@ -48,12 +48,24 @@ angular.module('app').controller('AgenteController', function ($scope, agenteSer
 
     }
 
+    $scope.pesquisar = function (pes) {
+        
+        agenteService.pesquisar(pes)
+            .then(function (response) {
+                $scope.agentes = response.data.content;
+                
+                $scope.paginas = response.data.totalElements;
+
+            })
+
+    }
+
 
     function listar(page, size) {
         agenteService.listar(page, size)
             .then(function (response) {
                 $scope.agentes = response.data.content;
-                console.log(response.data.content)
+               
                 $scope.paginas = response.data.totalElements;
             })
 

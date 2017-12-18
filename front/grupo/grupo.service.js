@@ -18,6 +18,10 @@ angular.module('app').factory('grupoService', function ($http) {
         return $http.delete(urlBase + id)
     }
 
+    function pesquisar(pesquisa) {
+        return $http.get(urlBase + 'pesquisar/' + pesquisa)
+    }
+
     function adicionarAgente(grupo, agente) {
         return $http.post(urlBase + 'add?group=' + grupo + '&machine=' + agente)
     }
@@ -44,7 +48,8 @@ angular.module('app').factory('grupoService', function ($http) {
         addFoto: addFoto,
         remover: remover,
         adicionarAgente: adicionarAgente,
-        removerAgente:removerAgente
+        removerAgente:removerAgente,
+        pesquisar:pesquisar
 
     };
 

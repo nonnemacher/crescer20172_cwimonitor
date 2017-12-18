@@ -9,6 +9,9 @@ angular.module('app').factory('agenteService', function ($http) {
     function listar(page, size) {
         return $http.get(urlBase + '?page=' + page + '&size=' + size)
     }
+    function pesquisar(pesquisa) {
+        return $http.get(urlBase + 'pesquisar/' + pesquisa)
+    }
     function listarAgenteAdicionar(id, page, size) {
         return $http.get(urlBase + 'noGroup/' + id + '?page=' + page + '&size=' + size)
     }
@@ -27,7 +30,7 @@ angular.module('app').factory('agenteService', function ($http) {
     function pesquisarPorId(id) {
         return $http.get(urlBase + id)
     }
-    
+
 
     return {
         cadastrar: cadastrar,
@@ -36,7 +39,8 @@ angular.module('app').factory('agenteService', function ($http) {
         listarTodos: listarTodos,
         listarAgenteAdicionar: listarAgenteAdicionar,
         listarAgenteAdicionados: listarAgenteAdicionados,
-        deletar: deletar
+        deletar: deletar,
+        pesquisar: pesquisar
     };
 
 })

@@ -5,7 +5,7 @@
     <form>
         <div class="form-group">
             <label class="col-form-label" for="formGroupExampleInput">Pesquisar</label>
-            <input type="text" class="form-control pes" id="formGroupExampleInput" placeholder="Pesquisar" name="search" ng-model="search">
+            <input type="text" class="form-control pes" ng-change="pesquisar(search)" id="formGroupExampleInput" placeholder="Pesquisar" name="search" ng-model="search">
 
         </div>
     </form>
@@ -23,8 +23,7 @@
                     <th scope="col">Icone</th>
                     <th scope="col">Gráfico</th>
                     <th scope="col">Agentes</th>
-                    <th scope="col">Adicionar Agente</th>
-                    <th scope="col">Editar</th>
+                    <th scope="col">Adicionar Agente</th>                    
                     <th scope="col">Excluir</th>
                 </tr>
             </thead>
@@ -48,12 +47,7 @@
                         <a href="#!/adicionarAgente/{{grupo.id}}">
                             <button type="button" class="btn btn-success btnAdicionar">Adicionar Agentes</button>
                         </a>
-                    </td>
-                    <td>
-                        <a href="#!/CadastroOrcamento/{{orcamento.Id}}">
-                            <button type="button" class="btn btn-primary btnEditar">Editar</button>
-                        </a>
-                    </td>
+                    </td>                   
                     <td>
                         <button type="button" class="btn btn-danger btnExcluir" ng-click="excluir(grupo)" value="Deletar">Excluir</button>
                     </td>

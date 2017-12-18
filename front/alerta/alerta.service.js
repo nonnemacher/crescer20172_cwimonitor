@@ -10,6 +10,10 @@ angular.module('app').factory('alertaService', function ($http) {
         return $http.get(urlBase + 'group' + '?page=' + page + '&size=' + size);
 
     }
+
+    function pesquisar(pesquisa) {
+        return $http.get(urlBase + 'pesquisar/' + pesquisa)
+    }
     function listarAgentes(page, size) {
         return $http.get(urlBase + 'agent' + '?page=' + page + '&size=' + size);
 
@@ -22,7 +26,8 @@ angular.module('app').factory('alertaService', function ($http) {
         cadastrar: cadastrar,
         listarGrupos: listarGrupos,
         listarAgentes: listarAgentes,
-        deletar: deletar
+        deletar: deletar,
+        pesquisar:pesquisar
 
     };
 
