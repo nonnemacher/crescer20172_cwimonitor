@@ -40,7 +40,7 @@ angular.module('app').controller('AgenteController', function ($scope, agenteSer
                     swal("Deletado!", `${agente.machineNickname} foi deletado`, "success")
                     listar(0, 5)
                 }, function (response) {
-                    console.log(response)
+                    
                     swal("Falha na solicitação!", response.data.message, "error")
                 })
 
