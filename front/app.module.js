@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'auth', 'ng-fusioncharts','ui.bootstrap','ngTagsInput']);
+angular.module('app', ['ngRoute', 'auth', 'ng-fusioncharts','ui.bootstrap','ngTagsInput','ngclipboard']);
 
 
 // Configurações utilizadas pelo módulo de autenticação (authService)
